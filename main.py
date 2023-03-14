@@ -28,7 +28,7 @@ df = pd.read_csv("set2.csv")
 
 castle_heroes = ['Adelaide', 'Orrin', 'Valeska', 'Edric', 'Sylvia',
                  'Beatrice', 'Lord Haart', 'Sorsha', 'Christian',
-                 'Tyris', 'Rion', 'Adela', 'Cuthbert', 'cuttbert','Ingham', 'Sanya', 'Loynis',
+                 'Tyris', 'Rion', 'Adela', 'Cuthbert','Ingham', 'Sanya', 'Loynis',
                  'Caitlin', 'Katarzyna', 'Roland']
 
 rampart_heroes = ['Mephala', 'Ufretin', 'Jenova', 'Ryland', 'Giselle', 'Ivor', 'Clancy', 'Thorgrim', 'Kyrre',
@@ -58,7 +58,7 @@ conflux_heroes = ['Pasis', 'Thunar', 'Ignissa', 'Lacus', 'Kalt', 'Fiur', 'Erdamo
                   'Luna', 'Inteus', 'Grindan', 'Labetha', 'Ciele', 'Gelare', 'Aenain', 'Brissa']
 
 cove_heroes = ['Cassiopeia', 'Derek', 'Anabel', 'Illor','Tark', 'Corkes', 'Jeremy', 'Miriam', 'Elmore',
-               'Leena', 'Eovacius','Astra', 'Andal', 'Manfred', 'Casmetra', 'Zilare', 'Spint', 'Dargem']
+               'Leena', 'Eovacius','Astra', 'Andal', 'Manfred', 'Casmetra', 'Zilare', 'Spint', 'Dargem', 'Bidley']
 
 towns = ["castle", "rampart", "tower", "inferno", "necropolis", "dungeon", "stronghold", "fortress", "conflux", "cove"]
 heroes = {"castle": castle_heroes, "rampart": rampart_heroes, "tower": tower_heroes, "inferno": inferno_heroes,
@@ -103,14 +103,12 @@ if False:
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Define the first dropdown menu for selecting the template
-template_options = [{'label': 'h3dm1', 'value': 'h3dm1'}, {'label': 'mt_fw', 'value': 'mt_fw'}, {'label': 'nostalgia', 'value': 'nostalgia'},
- {'label': '6lm10a', 'value': '6lm10a'}, {'label': 'mt_andromeda', 'value': 'mt_andromeda'}, {'label': 'mininosta', 'value': 'mininosta'},
- {'label': 'mt_mp', 'value': 'mt_mp'}, {'label': 'mt_antares', 'value': 'mt_antares'}, {'label': 'w/o', 'value': 'w/o'}, {'label': 'rally', 'value': 'rally'},
- {'label': 'h3dm3.2', 'value': 'h3dm3.2'}, {'label': 'spider', 'value': 'spider'}, {'label': 'h3dm3', 'value': 'h3dm3'}, {'label': 'Nostalgia', 'value': 'Nostalgia'},
- {'label': 'mt_Firewalk', 'value': 'mt_Firewalk'}, {'label': 'Jebus Cross', 'value': 'Jebus Cross'}, {'label': 'mt_Andromeda 2.1', 'value': 'mt_Andromeda 2.1'},
- {'label': 'mt_JebusKing', 'value': 'mt_JebusKing'}, {'label': 'Duel', 'value': 'Duel'}, {'label': '8mm6a', 'value': '8mm6a'}, {'label': 'mt_wrzosy', 'value': 'mt_wrzosy'},
- {'label': 'mt_andromeda2.1', 'value': 'mt_andromeda2.1'}, {'label': 'mini-nosta', 'value': 'mini-nosta'}, {'label': '2sm4d(3)', 'value': '2sm4d(3)'},
- {'label': 'mt_Nebula', 'value': 'mt_Nebula'}, {'label': 'mt_mp 1.04', 'value': 'mt_mp 1.04'}, {'label': 'Sapphire', 'value': 'Sapphire'}]
+template_options = [{'label': 'h3dm1/3', 'value': 'h3dm1/3'}, {'label': 'Nostalgia/TP', 'value': 'Nostalgia/TP'},
+ {'label': '6lm10a/tp', 'value': '6lm10a/tp'}, {'label': 'mt_MP', 'value': 'mt_MP'}, {'label': 'mt_Antares', 'value': 'mt_Antares'},
+ {'label': 'w/o', 'value': 'w/o'}, {'label': 'Rally', 'value': 'Rally'}, {'label': 'Spider', 'value': 'Spider'},
+ {'label': 'mt_Firewalk', 'value': 'mt_Firewalk'}, {'label': 'Jebus Cross', 'value': 'Jebus Cross'}, 
+ {'label': 'mt_JebusKing', 'value': 'mt_JebusKing'}, {'label': 'Duel', 'value': 'Duel'}, {'label': '8mm6a', 'value': '8mm6a'}, {'label': 'mt_Wrzosy', 'value': 'mt_Wrzosy'},
+ {'label': 'mt_Andromeda', 'value': 'mt_Andromeda'}, {'label': 'Mini-nostalgia', 'value': 'Mini-nostalgia'}, {'label': '2sm4d(3)', 'value': '2sm4d(3)'}, {'label': 'Sapphire', 'value': 'Sapphire'}]
 template_dropdown = dcc.Dropdown(id='template-dropdown', options=template_options, value=df['template'].iloc[0])
 
 # Define the layout of the app
