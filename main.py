@@ -12,8 +12,8 @@ df = pd.read_csv("combined_processed.csv")
 
 castle_heroes = ['Adelaide', 'Orrin', 'Valeska', 'Edric', 'Sylvia',
                  'Beatrice', 'Lord Haart', 'Sorsha', 'Christian',
-                 'Tyris', 'Rion', 'Adela', 'Cuthbert', 'cuttbert', 'Ingham', 'Sanya', 'Loynis',
-                 'Caitlin', 'Katarzyna', 'Roland']
+                 'Tyris', 'Rion', 'Adela', 'Cuthbert', 'Ingham', 'Sanya', 'Loynis',
+                 'Caitlin', 'Katarzyna', 'Catherine', 'Roland']
 
 rampart_heroes = ['Mephala', 'Ufretin', 'Jenova', 'Ryland', 'Giselle', 'Ivor', 'Clancy', 'Thorgrim', 'Kyrre',
                   'Coronius', 'Uland', 'Elleshar', 'Gem', 'Malcom', 'Melodia', 'Alagar', 'Aeris']
@@ -28,7 +28,7 @@ necropolis_heroes = ['Straker', 'Vokial', 'Moandor', 'Charna', 'Tamika', 'Isra',
                      'Septienna', 'Aislinn', 'Sandro', 'Nimbus', 'Thant', 'Xsi', 'Vidomina', 'Nagash',
                      'Haart Lich', 'Galthran']
 
-dungeon_heroes = ['Lorelei', 'lorelai', 'Arlach', 'Dace', 'Ajit', 'Damacon', 'Gunnar',
+dungeon_heroes = ['Lorelei', 'Arlach', 'Dace', 'Ajit', 'Damacon', 'Gunnar',
                   'Synca', 'Shakti', 'Alamar', 'Jaegar', 'Malekith', 'Jeddite',
                   'Deemer', 'Geon', 'Sephinroth', 'Darkstorn', 'Mutare Drake', 'Mutare']
 
@@ -220,7 +220,15 @@ template_options = [{'label': 'h3dm1/3', 'value': 'h3dm1/3'}, {'label': 'Nostalg
                     {'label': 'mt_Andromeda', 'value': 'mt_Andromeda'},
                     {'label': 'Mini-nostalgia', 'value': 'Mini-nostalgia'}, {'label': '2sm4d(3)', 'value': '2sm4d(3)'},
                     {'label': 'Sapphire', 'value': 'Sapphire'}]
+# Define the second? dropdown menu for selecting the town
+# town_options = [{'label': 'castle', 'value': 'castle'}, {'label': 'rampart', 'value': 'rampart'}, 
+#                 {'label': 'tower', 'value': 'tower'}, {'label': 'inferno', 'value': 'inferno'}, 
+#                 {'label': 'necropolis', 'value': 'necropolis'}, {'label': 'dungeon', 'value': 'dungeon'}, 
+#                 {'label': 'stronghold', 'value': 'stronghold'}, {'label': 'fortress', 'value': 'fortress'}, 
+#                 {'label': 'conflux', 'value': 'conflux'}, {'label': 'cove', 'value': 'cove'}]
 template_dropdown = dcc.Dropdown(id='template-dropdown', options=template_options, value=df['template'].iloc[0])
+# town1_dropdown = dcc.Dropdown(id='town1-dropdown', options=template_options, value=df['player_one_town'].iloc[0])
+# town2_dropdown = dcc.Dropdown(id='town2-dropdown', options=template_options, value=df['player_two_town'].iloc[0])
 
 # Define the layout of the app
 app.layout = html.Div([
@@ -256,7 +264,6 @@ app.layout = html.Div([
 ])
 
 
-# Define the callback for updating the dropdown menus based on the selected template
 # Define the callback for updating the dropdown menus based on the selected template
 @app.callback(
     [Output('template-dropdown', 'options'),
@@ -309,7 +316,8 @@ def update_template(cur_data, template):
     Input("town_V_town_check", "value"),
     Input("town_V_town_state", "data"),
     Input("dataset", "data"))
-def update_section2(template, value, state, cur_data):
+def update_section2(template, value, state):#, cur_data):
+    #print(value) #printing doesn't seem to print to anywhere...
     value = list(set(value) - set(state))
 
     if value == ["bidding"] or (value == [] and state == ["bidding"]):
