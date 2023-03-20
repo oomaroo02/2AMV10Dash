@@ -28,7 +28,7 @@ app.layout = html.Div([
     dbc.Row([
         dbc.Col(html.H3('Section 1'), width=12),
         dbc.Col(
-            [dcc.Graph(id="town_V_town_graph"),
+            [dcc.Graph(config={'displayModeBar': False}, id="town_V_town_graph"),
              dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"],
                            id="town_V_town_check"),
              dcc.Store(data=[], id="town_V_town_state")
@@ -48,7 +48,7 @@ app.layout = html.Div([
             dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2')]),
     ]),
 
-    dcc.Store(data = 0, id="dataset")
+    dcc.Store(data = [0], id="dataset")
 ])
 
 

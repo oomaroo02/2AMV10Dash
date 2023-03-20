@@ -119,7 +119,7 @@ def create_town_v_town_graphs(int_df):
 def variable_result_graph(sub_df, variable, amount_quantiles):
     quantiles = []
     for i in [i * (1 / amount_quantiles) for i in range(amount_quantiles + 1)]:
-        quantiles.append(sub_df[variable].quantile(i))
+        quantiles.append(int(sub_df[variable].quantile(i)))
 
     names = [f"{quantiles[i]} <-> {quantiles[i + 1]}" for i in range(amount_quantiles)]
     for i in range(amount_quantiles):
@@ -169,7 +169,7 @@ def town_A_town_jitter(sub_df):
     for i in range(len(y)):
         x.append(1 + (random() - 0.5))
 
-    return go.Figure(data=px.scatter(y=y, x=x, color=list(sub_df["result"])))
+    return go.Figure(data=px.scatter(y=y, x=x, color=[str(x) for x in sub_df["result"]]))
 
 
 
