@@ -48,7 +48,7 @@ for town in heroes_per_town:
 
 full_heroes = sum([heroes_per_town[i] for i in heroes_per_town], [])
 
-template_types = ["All", "XL+U", "Mirror", "Jebus", "Duel", "Other"]
+template_types = ["XL+U", "Mirror", "Jebus", "Duel", "Other"]
 
 def town_v_town_winrate_heatmap(int_df):
     res = []
