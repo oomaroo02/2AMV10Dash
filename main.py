@@ -10,51 +10,14 @@ from random import random
 
 from functions import *
 
-df = pd.read_csv("combined_processed.csv")
-
-if False:
-    df2 = pd.DataFrame(
-        columns=["result", "town", "hero", "color", "bidding", "opponent_town", "opponent_hero", "turns", "template"])
-
-    for row in df.iterrows():
-        row = row[1]
-        if row[1] > row[3]:
-            result = 1
-        elif row[1] < row[3]:
-            result = 0
-        else:
-            result = 0.5
-        df_temp = pd.DataFrame([[result, row[12], row[6], row[13], row[8], row[14], row[7], row[11], row[5], row[16]]],
-                               columns=["result", "town", "hero", "color", "bidding", "opponent_town", "opponent_hero",
-                                        "turns", "template", "template_type"])
-        df2 = pd.concat([df2, df_temp])
-
-        df_temp = pd.DataFrame([[1 - result, row[14], row[7], {"red": "blue", "blue": "red", "white": "white"}[row[13]],
-                                 -row[8], row[12], row[6], row[11], row[5], row[16]]],
-                               columns=["result", "town", "hero", "color", "bidding", "opponent_town", "opponent_hero",
-                                        "turns", "template", "template_type"])
-        df2 = pd.concat([df2, df_temp])
-
-    df2.to_csv("set2.csv", index=False)
-
-df2 = pd.read_csv("set2.csv")
+import_df = pd.read_csv("set2.csv")
+df = copy(import_df)
 
 # Create the app and set the theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-# Define the first dropdown menu for selecting the template
-template_options = [{'label': 'h3dm1/3', 'value': 'h3dm1/3'}, {'label': 'Nostalgia/TP', 'value': 'Nostalgia/TP'},
-                    {'label': '6lm10a/tp', 'value': '6lm10a/tp'}, {'label': 'mt_MP', 'value': 'mt_MP'},
-                    {'label': 'mt_Antares', 'value': 'mt_Antares'},
-                    {'label': 'w/o', 'value': 'w/o'}, {'label': 'Rally', 'value': 'Rally'},
-                    {'label': 'Spider', 'value': 'Spider'},
-                    {'label': 'mt_Firewalk', 'value': 'mt_Firewalk'}, {'label': 'Jebus Cross', 'value': 'Jebus Cross'},
-                    {'label': 'mt_JebusKing', 'value': 'mt_JebusKing'}, {'label': 'Duel', 'value': 'Duel'},
-                    {'label': '8mm6a', 'value': '8mm6a'}, {'label': 'mt_Wrzosy', 'value': 'mt_Wrzosy'},
-                    {'label': 'mt_Andromeda', 'value': 'mt_Andromeda'},
-                    {'label': 'Mini-nostalgia', 'value': 'Mini-nostalgia'}, {'label': '2sm4d(3)', 'value': '2sm4d(3)'},
-                    {'label': 'Sapphire', 'value': 'Sapphire'}]
-template_dropdown = dcc.Dropdown(id='template-dropdown', options=template_options, value=df['template'].iloc[0])
+
+template_dropdown = dcc.Dropdown(id='template-dropdown', options=["all"] + template_types, value="all")
 
 # Define the layout of the app
 app.layout = html.Div([
@@ -71,8 +34,8 @@ app.layout = html.Div([
              dcc.Graph(id="town_V_town_graph"),
              dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"],
                            id="town_V_town_check"),
-             dcc.Store(data=[], id="town_V_town_state"),
-             dcc.Store(data=0, id="dataset")]),
+             dcc.Store(data=[], id="town_V_town_state")
+        ])
     ]),
     dbc.Row([
         dbc.Col(html.H3('Section 3'), width=12),
@@ -86,54 +49,31 @@ app.layout = html.Div([
             dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'),
             dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1'),
             dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2')]),
-    ])
+    ]),
+
+    dcc.Store(data = 0, id="dataset")
 ])
 
 
 # Define the callback for updating the dropdown menus based on the selected template
-# Define the callback for updating the dropdown menus based on the selected template
 @app.callback(
-    [Output('template-dropdown', 'options'),
-     Output('template-dropdown', 'value'),
-     Output('town1-dropdown', 'options'),
-     Output('town1-dropdown', 'value'),
-     Output('town2-dropdown', 'options'),
-     Output('town2-dropdown', 'value')],
-    [Input('template-dropdown', 'value')]
+    [Output('dataset', 'data')],
+    [Input('template-dropdown', 'value'),
+     Input('dataset', 'data')]
 )
-def update_dropdowns(template):
+def update_dropdowns(template, dataset):
     # Filter data based on the selected template
-    template_df = df[df['template'] == template]
+    global df, fig_winrate, fig_bidding, fig_bidding_variance
 
-    # Update dropdown options for Section 1
-    town_options = [{'label': i, 'value': i} for i in template_df['town'].unique()]
-    town_value = template_df['town'].iloc[0]
-
-    # Update dropdown options for Section 3
-    town1_options = [{'label': i, 'value': i} for i in template_df['town'].unique()]
-    town2_options = [{'label': i, 'value': i} for i in template_df['opponent_town'].unique()]
-    town1_value = template_df['town'].iloc[0]
-    town2_value = template_df['opponent_town'].iloc[0]
-
-    return town_options, town_value, town1_options, town1_value, town2_options, town2_value
-
-
-# Define the callback for updating the graphs based on the selected town in Section 1
-@app.callback(
-    Output("dataset", "data"),
-    Input("dataset", "data"),
-    Input("template_dropdown", "value"))
-def update_template(cur_data, template):
-    global used_df, fig_winrate, fig_bidding, fig_bidding_variance
-
-    if template != "All":
-        used_df = df2[df2["template_type"] == template]
+    if template == "all":
+        df = copy(import_df)
     else:
-        used_df = copy(df2)
+        df = import_df[import_df['template_type'] == template]
 
-    fig_winrate, fig_bidding, fig_bidding_variance = create_town_v_town_graphs(used_df)
+    fig_winrate, fig_bidding, fig_bidding_variance = create_town_v_town_graphs(df)
 
-    return cur_data + 1
+    print(dataset)
+    return 5
 
 
 @app.callback(
@@ -143,7 +83,7 @@ def update_template(cur_data, template):
     Input("town_V_town_check", "value"),
     Input("town_V_town_state", "data"),
     Input("dataset", "data"))
-def update_section2(template, value, state, cur_data):
+def update_section2(value, state, dummy):
     value = list(set(value) - set(state))
 
     if value == ["bidding"] or (value == [] and state == ["bidding"]):
@@ -162,10 +102,11 @@ def update_section2(template, value, state, cur_data):
     Output("town_A_town_heroes", "data"),
     Output("town_A_town_heroes", "columns"),
     Input("town_A_town_dropdown_1", "value"),
-    Input("town_A_town_dropdown_2", "value"))
-def town_A_town(town1, town2):
-    sub_df = df2[df2["town"] == town1] if town2 == "all" else df2[
-        (df2["town"] == town1) & (df2["opponent_town"] == town2)]
+    Input("town_A_town_dropdown_2", "value"),
+    Input("dataset", "data"))
+def town_A_town(town1, town2, dummy):
+    sub_df = df[df["town"] == town1] if town2 == "all" else df[
+        (df["town"] == town1) & (df["opponent_town"] == town2)]
 
     boxplot = go.Figure(data=px.box(sub_df, y="bidding"))
     jitter = town_A_town_jitter(sub_df)
@@ -182,10 +123,11 @@ def town_A_town(town1, town2):
     Input("town_A_town_bar_check_state", "data"),
     Input("town_A_town_bar_slider", "value"),
     Input("town_A_town_dropdown_1", "value"),
-    Input("town_A_town_dropdown_2", "value"))
-def town_graph(value, state, quantiles, town1, town2):
-    sub_df = df2[df2["town"] == town1] if town2 == "all" else df2[
-        (df2["town"] == town1) & (df2["opponent_town"] == town2)]
+    Input("town_A_town_dropdown_2", "value"),
+    Input("dataset", "data"))
+def town_graph(value, state, quantiles, town1, town2, dummy):
+    sub_df = df[df["town"] == town1] if town2 == "all" else df[
+        (df["town"] == town1) & (df["opponent_town"] == town2)]
 
     value = list(set(value) - set(state))
 
