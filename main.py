@@ -12,12 +12,10 @@ from functions import *
 
 import_df = pd.read_csv("set2.csv")
 df = copy(import_df)
+template_edit_counter = 0
 
 # Create the app and set the theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
-
-template_dropdown = dcc.Dropdown(id='template-dropdown', options=["all"] + template_types, value="all")
 
 # Define the layout of the app
 app.layout = html.Div([
@@ -25,20 +23,19 @@ app.layout = html.Div([
         dbc.Col(html.H1('Dashboard'), width=12)
     ]),
     dbc.Row([
-        dbc.Col(template_dropdown, width=12)
+        dbc.Col(dcc.Dropdown(options = ["All"]+template_types, value="All", id="template_dropdown"), width=12)
     ]),
     dbc.Row([
-        dbc.Col(html.H3('Section 2'), width=12),
+        dbc.Col(html.H3('Section 1'), width=12),
         dbc.Col(
-            [dcc.Dropdown(template_types, value="All", id="template_dropdown"),
-             dcc.Graph(id="town_V_town_graph"),
+            [dcc.Graph(id="town_V_town_graph"),
              dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"],
                            id="town_V_town_check"),
              dcc.Store(data=[], id="town_V_town_state")
         ])
     ]),
     dbc.Row([
-        dbc.Col(html.H3('Section 3'), width=12),
+        dbc.Col(html.H3('Section 2'), width=12),
         dbc.Col([
             dash_table.DataTable(sort_action='native', id="town_A_town_heroes"),
             dcc.Graph(id="town_A_town_boxplot"),
@@ -58,22 +55,22 @@ app.layout = html.Div([
 # Define the callback for updating the dropdown menus based on the selected template
 @app.callback(
     [Output('dataset', 'data')],
-    [Input('template-dropdown', 'value'),
-     Input('dataset', 'data')]
+    [Input('template_dropdown', 'value')]
 )
-def update_dropdowns(template, dataset):
+def update_dropdowns(template):
     # Filter data based on the selected template
-    global df, fig_winrate, fig_bidding, fig_bidding_variance
+    global df, fig_winrate, fig_bidding, fig_bidding_variance, template_edit_counter
 
-    if template == "all":
+    if template == "All":
         df = copy(import_df)
     else:
         df = import_df[import_df['template_type'] == template]
 
     fig_winrate, fig_bidding, fig_bidding_variance = create_town_v_town_graphs(df)
 
-    print(dataset)
-    return 5
+    template_edit_counter += 1
+
+    return [template_edit_counter]
 
 
 @app.callback(
@@ -83,7 +80,7 @@ def update_dropdowns(template, dataset):
     Input("town_V_town_check", "value"),
     Input("town_V_town_state", "data"),
     Input("dataset", "data"))
-def update_section2(value, state, dummy):
+def update_section1(value, state, dummy):
     value = list(set(value) - set(state))
 
     if value == ["bidding"] or (value == [] and state == ["bidding"]):
