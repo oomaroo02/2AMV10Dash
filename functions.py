@@ -133,7 +133,12 @@ def variable_result_graph(sub_df, variable, amount_quantiles):
     for i in names:
         y.append(round(sub_df[sub_df[f"{variable} quantiles"] == i]["result"].mean(), 2))
 
-    return px.bar(x=names, y=y)
+    figure = go.Figure(data=px.bar(x=names, y=y))
+    figure.update_layout(xaxis = {"title": variable.capitalize()},
+                         yaxis = {"title": "Winrate"},
+                         title = f"Winrate acros Different {variable.capitalize()}")
+    
+    return figure
 
 
 def heroes_table(sub_df):
@@ -141,11 +146,10 @@ def heroes_table(sub_df):
     sub_heroes = [hero for hero in full_heroes if hero in sub_heroes]
 
     table_df = pd.DataFrame(
-        columns=["hero", "mean bidding", "winrate", "pickrate for town", "times picked", "mean turns"])
+        columns=["Hero", "Mean Bidding", "Winrate", "Pickrate for Town", "Times Picked", "Mean Turns"])
     new_row = pd.DataFrame([["all", round(sub_df["bidding"].mean(), 2), round(sub_df["result"].mean(), 2), 1,
                              len(sub_df), round(sub_df["turns"].mean(), 2)]],
-                           columns=["hero", "mean bidding", "winrate", "pickrate for town", "times picked",
-                                    "mean turns"])
+                           columns=["Hero", "Mean Bidding", "Winrate", "Pickrate for Town", "Times Picked", "Mean Turns"])
     table_df = pd.concat([table_df, new_row])
 
     for hero in sub_heroes:
@@ -153,8 +157,7 @@ def heroes_table(sub_df):
         new_row = pd.DataFrame([[hero, round(sub_sub_df["bidding"].mean()), round(sub_sub_df["result"].mean(), 2),
                                  round(len(sub_sub_df) / len(sub_df), 2), len(sub_sub_df),
                                  round(sub_sub_df["turns"].mean(), 2)]],
-                               columns=["hero", "mean bidding", "winrate", "pickrate for town", "times picked",
-                                        "mean turns"])
+                               columns=["Hero", "Mean Bidding", "Winrate", "Pickrate for Town", "Times Picked", "Mean Turns"])
         table_df = pd.concat([table_df, new_row])
 
     data = table_df.to_dict('records')
@@ -169,7 +172,21 @@ def town_A_town_jitter(sub_df):
     for i in range(len(y)):
         x.append(1 + (random() - 0.5))
 
-    return go.Figure(data=px.scatter(y=y, x=x, color=[str(x) for x in sub_df["result"]]))
+    figure = go.Figure(data=px.scatter(y=y, x=x, color=[str(x) for x in sub_df["result"]]))
+    figure.update_layout(xaxis = {"fixedrange":True, "showgrid":False, "visible":False},
+                         yaxis = {"title": "Bidding"},
+                         title = "Bidding for Different Game Outcomes")
+
+
+    return figure
+
+def bidding_boxplot(sub_df):
+    figure = go.Figure(data=px.box(sub_df, y="bidding"))
+    figure.update_layout(xaxis = {"fixedrange":True, "showgrid":False, "visible":False},
+                         yaxis = {"title": "Bidding"},
+                         title = "Bidding Boxplot")
+    
+    return figure
 
 
 

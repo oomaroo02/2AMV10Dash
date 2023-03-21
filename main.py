@@ -39,7 +39,7 @@ app.layout = html.Div([
         dbc.Col([
             dash_table.DataTable(sort_action='native', id="town_A_town_heroes"),
             dcc.Graph(id="town_A_town_boxplot"),
-            dcc.Graph(id="town_A_town_jitter"),
+            dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}),
             dcc.Graph(id="town_A_town_bar"),
             dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
             dcc.Store(data=[], id="town_A_town_bar_check_state"),
@@ -105,11 +105,11 @@ def town_A_town(town1, town2, dummy):
     sub_df = df[df["town"] == town1] if town2 == "all" else df[
         (df["town"] == town1) & (df["opponent_town"] == town2)]
 
-    boxplot = go.Figure(data=px.box(sub_df, y="bidding"))
+    boxplot = bidding_boxplot(sub_df)
     jitter = town_A_town_jitter(sub_df)
     heroes_data, heroes_columns = heroes_table(sub_df)
 
-    return jitter, boxplot, heroes_data, heroes_columns
+    return boxplot, jitter, heroes_data, heroes_columns
 
 
 @app.callback(
