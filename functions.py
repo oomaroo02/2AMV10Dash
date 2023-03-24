@@ -136,7 +136,7 @@ def variable_result_graph(sub_df, variable, amount_quantiles):
     figure = go.Figure(data=px.bar(x=names, y=y))
     figure.update_layout(xaxis = {"title": variable.capitalize()},
                          yaxis = {"title": "Winrate"},
-                         title = f"Winrate acros Different {variable.capitalize()}")
+                         title = f"Winrate Across {amount_quantiles} Different {variable.capitalize()} Quantiles")
     
     return figure
 

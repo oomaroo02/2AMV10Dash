@@ -28,7 +28,7 @@ app.layout = html.Div([
     dbc.Row([
         dbc.Col(html.H3('Section 1'), width=12),
         dbc.Col(
-            [dcc.Graph(config={'displayModeBar': False}, id="town_V_town_graph"),
+            [dcc.Graph(id="town_V_town_graph", config={'displayModeBar': False}),
              dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"],
                            id="town_V_town_check"),
              dcc.Store(data=[], id="town_V_town_state")
@@ -37,10 +37,12 @@ app.layout = html.Div([
     dbc.Row([
         dbc.Col(html.H3('Section 2'), width=12),
         dbc.Col([
-            dash_table.DataTable(sort_action='native', id="town_A_town_heroes"),
-            dcc.Graph(id="town_A_town_boxplot"),
+            html.Div([html.Label("Hero Stats"),
+                      dash_table.DataTable(sort_action='native', id="town_A_town_heroes")
+            ]),
+            dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}),
             dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}),
-            dcc.Graph(id="town_A_town_bar"),
+            dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
             dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
             dcc.Store(data=[], id="town_A_town_bar_check_state"),
             dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'),
@@ -102,8 +104,8 @@ def update_section1(value, state, dummy):
     Input("town_A_town_dropdown_2", "value"),
     Input("dataset", "data"))
 def town_A_town(town1, town2, dummy):
-    sub_df = df[df["town"] == town1] if town2 == "all" else df[
-        (df["town"] == town1) & (df["opponent_town"] == town2)]
+    sub_df = copy(df[df["town"] == town1]) if town2 == "all" else copy(df[
+        (df["town"] == town1) & (df["opponent_town"] == town2)])
 
     boxplot = bidding_boxplot(sub_df)
     jitter = town_A_town_jitter(sub_df)
@@ -123,8 +125,8 @@ def town_A_town(town1, town2, dummy):
     Input("town_A_town_dropdown_2", "value"),
     Input("dataset", "data"))
 def town_graph(value, state, quantiles, town1, town2, dummy):
-    sub_df = df[df["town"] == town1] if town2 == "all" else df[
-        (df["town"] == town1) & (df["opponent_town"] == town2)]
+    sub_df = copy(df[df["town"] == town1]) if town2 == "all" else copy(df[
+        (df["town"] == town1) & (df["opponent_town"] == town2)])
 
     value = list(set(value) - set(state))
 
