@@ -20,37 +20,54 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 # Define the layout of the app
 app.layout = html.Div([
     dbc.Row([
-        dbc.Col(html.H1('Dashboard'), width=12)
+        dbc.Col(html.H1('Dashboard'), width=12),
     ]),
+
     dbc.Row([
-        dbc.Col(dcc.Dropdown(options = ["All"]+template_types, value="All", id="template_dropdown"), width=12)
+        dbc.Col([
+            html.Div(children=[
+                html.Div("Template Type", style={'display': 'inline-block', "width":"10%"}),
+                dcc.Dropdown(options = ["All"]+template_types, value="All", id="template_dropdown", style={'display': 'inline-block', "width":"35%"}),
+            ]),
+        ]),
     ]),
+
     dbc.Row([
-        dbc.Col(html.H3('Section 1'), width=12),
+        dbc.Col(html.H3('Matchup Spread'), width=12),
         dbc.Col(
             [dcc.Graph(id="town_V_town_graph", config={'displayModeBar': False}),
              dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"],
                            id="town_V_town_check"),
-             dcc.Store(data=[], id="town_V_town_state")
-        ])
+             dcc.Store(data=[], id="town_V_town_state"),
+        ]),
     ]),
+
     dbc.Row([
-        dbc.Col(html.H3('Section 2'), width=12),
+        dbc.Col(html.H3('Matchup Analysis'), width=12),
         dbc.Col([
+            html.Div(children=[
+                html.Div("Player 1", style={'display': 'inline-block', "width":"5%"}),
+                dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1', style={'display': 'inline-block', "width":"35%"}),
+                html.Div("Player 2", style={'display': 'inline-block', "width":"5%"}),
+                dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2', style={'display': 'inline-block',"width":"35%"})]),
             html.Div([html.Label("Hero Stats"),
                       dash_table.DataTable(sort_action='native', id="town_A_town_heroes")
             ]),
-            dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}),
-            dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}),
+            
+            html.Div([
+                html.Div(id="town_A_town_prediction", style={'display': 'inline-block', "width":"20%", "height": "25%"}),
+                html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"40%", "height": "25%"}),
+                html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"40%", "height": "25%"}),  
+            ]),
+            
             dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
             dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
             dcc.Store(data=[], id="town_A_town_bar_check_state"),
             dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'),
-            dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1'),
-            dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2')]),
+        ]),
     ]),
 
-    dcc.Store(data = [0], id="dataset")
+    dcc.Store(data = [0], id="dataset"),
 ])
 
 
@@ -98,6 +115,7 @@ def update_section1(value, state, dummy):
 @app.callback(
     Output("town_A_town_boxplot", "figure"),
     Output("town_A_town_jitter", "figure"),
+    Output("town_A_town_prediction", "children"),
     Output("town_A_town_heroes", "data"),
     Output("town_A_town_heroes", "columns"),
     Input("town_A_town_dropdown_1", "value"),
@@ -111,7 +129,10 @@ def town_A_town(town1, town2, dummy):
     jitter = town_A_town_jitter(sub_df)
     heroes_data, heroes_columns = heroes_table(sub_df)
 
-    return boxplot, jitter, heroes_data, heroes_columns
+    prediction = get_optimal_player_1_bid(sub_df)
+    prediction_text = f"Our model indicates the optimal bid for the {town1} player would be around {prediction}"
+
+    return boxplot, jitter, prediction_text, heroes_data, heroes_columns
 
 
 @app.callback(

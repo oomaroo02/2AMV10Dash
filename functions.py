@@ -1,8 +1,14 @@
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
+
 from random import random
-import plotly.graph_objects as go
 from statistics import stdev
+from sklearn.cluster import KMeans
+
 import plotly.express as px
 import pandas as pd
+import numpy as np
+import plotly.graph_objects as go
 
 castle_heroes = ['Adelaide', 'Orrin', 'Valeska', 'Edric', 'Sylvia',
                  'Beatrice', 'Lord Haart', 'Sorsha', 'Christian',
@@ -112,6 +118,9 @@ def create_town_v_town_graphs(int_df):
         data=go.Heatmap(z=res_bidding_variance, x=towns[::-1], y=towns, text=res_bidding_variance,
                         texttemplate="%{text}"),
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town bidding variance"})
+   
+    for fig in [fig_winrate, fig_bidding, fig_bidding_variance]:
+        fig.update_layout(xaxis = {"fixedrange":True}, yaxis = {"fixedrange":True})
 
     return fig_winrate, fig_bidding, fig_bidding_variance
 
@@ -189,4 +198,18 @@ def bidding_boxplot(sub_df):
     return figure
 
 
-
+def get_optimal_player_1_bid(df):
+    '''plug in a town vs. town dataframe'''
+    
+    df_won = df[df['result'] == 1.0]
+    df_lost = df[df['result'] == 0.0]
+    
+    X_won = np.array(df_won['bidding']).reshape(-1, 1)
+    X_lost = np.array(df_lost['bidding']).reshape(-1, 1)
+    
+    kmeans_won = KMeans(n_clusters=1, random_state=0, n_init=2).fit(X_won)
+    kmeans_lost= KMeans(n_clusters=1, random_state=0, n_init=2).fit(X_lost)
+    
+    optimal_value =  int((kmeans_won.cluster_centers_[0][0] + kmeans_lost.cluster_centers_[0][0])/2)
+    
+    return optimal_value
