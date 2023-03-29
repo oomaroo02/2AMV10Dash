@@ -58,7 +58,7 @@ template_types = ["XL+U", "Mirror", "Jebus", "Duel", "Other"]
 
 def town_v_town_winrate_heatmap(int_df):
     res = []
-    for town in towns:
+    for town in towns[::-1]:
         res.append([])
         for op_town in towns[::-1]:
             subset = int_df[(int_df["town"] == town) & (int_df["opponent_town"] == op_town)]
@@ -73,7 +73,7 @@ def town_v_town_winrate_heatmap(int_df):
 
 def town_v_town_bidding_heatmap(int_df):
     res = []
-    for town in towns:
+    for town in towns[::-1]:
         res.append([])
         for op_town in towns[::-1]:
             subset = int_df[(int_df["town"] == town) & (int_df["opponent_town"] == op_town)]
@@ -88,7 +88,7 @@ def town_v_town_bidding_heatmap(int_df):
 
 def town_v_town_bidding_variance_heatmap(int_df):
     res = []
-    for town in towns:
+    for town in towns[::-1]:
         res.append([])
         for op_town in towns[::-1]:
             subset = int_df[(int_df["town"] == town) & (int_df["opponent_town"] == op_town)]
@@ -107,15 +107,15 @@ def create_town_v_town_graphs(int_df):
     res_bidding_variance = town_v_town_bidding_variance_heatmap(int_df)
 
     fig_winrate = go.Figure(
-        data=go.Heatmap(z=res_winrate, x=towns[::-1], y=towns, text=res_winrate, texttemplate="%{text}"),
+        data=go.Heatmap(z=res_winrate, x=towns[::-1], y=towns[::-1], text=res_winrate, texttemplate="%{text}"),
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town winrate"})
 
     fig_bidding = go.Figure(
-        data=go.Heatmap(z=res_bidding, x=towns[::-1], y=towns, text=res_bidding, texttemplate="%{text}"),
+        data=go.Heatmap(z=res_bidding, x=towns[::-1], y=towns[::-1], text=res_bidding, texttemplate="%{text}"),
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town bidding"})
 
     fig_bidding_variance = go.Figure(
-        data=go.Heatmap(z=res_bidding_variance, x=towns[::-1], y=towns, text=res_bidding_variance,
+        data=go.Heatmap(z=res_bidding_variance, x=towns[::-1], y=towns[::-1], text=res_bidding_variance,
                         texttemplate="%{text}"),
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town bidding variance"})
    
@@ -155,10 +155,10 @@ def heroes_table(sub_df):
     sub_heroes = [hero for hero in full_heroes if hero in sub_heroes]
 
     table_df = pd.DataFrame(
-        columns=["Hero", "Mean Bidding", "Winrate", "Pickrate for Town", "Times Picked", "Mean Turns"])
+        columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
     new_row = pd.DataFrame([["all", round(sub_df["bidding"].mean(), 2), round(sub_df["result"].mean(), 2), 1,
                              len(sub_df), round(sub_df["turns"].mean(), 2)]],
-                           columns=["Hero", "Mean Bidding", "Winrate", "Pickrate for Town", "Times Picked", "Mean Turns"])
+                           columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
     table_df = pd.concat([table_df, new_row])
 
     for hero in sub_heroes:
@@ -166,7 +166,7 @@ def heroes_table(sub_df):
         new_row = pd.DataFrame([[hero, round(sub_sub_df["bidding"].mean()), round(sub_sub_df["result"].mean(), 2),
                                  round(len(sub_sub_df) / len(sub_df), 2), len(sub_sub_df),
                                  round(sub_sub_df["turns"].mean(), 2)]],
-                               columns=["Hero", "Mean Bidding", "Winrate", "Pickrate for Town", "Times Picked", "Mean Turns"])
+                               columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
         table_df = pd.concat([table_df, new_row])
 
     data = table_df.to_dict('records')

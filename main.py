@@ -50,20 +50,25 @@ app.layout = html.Div([
                 dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1', style={'display': 'inline-block', "width":"35%"}),
                 html.Div("Player 2", style={'display': 'inline-block', "width":"5%"}),
                 dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2', style={'display': 'inline-block',"width":"35%"})]),
+            
             html.Div([html.Label("Hero Stats"),
                       dash_table.DataTable(sort_action='native', id="town_A_town_heroes")
-            ]),
+            ]),]),
             
-            html.Div([
-                html.Div(id="town_A_town_prediction", style={'display': 'inline-block', "width":"20%", "height": "25%"}),
-                html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"40%", "height": "25%"}),
-                html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"40%", "height": "25%"}),  
-            ]),
-            
+        html.Div(children=[
+            html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width":"20%", "height": "25%", 'font-size': '26px', "align":"center", 'align-items':'center', 'justify-content':'center'}),
+            html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"20%", "height": "25%"}),
+            html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"40%", "height": "25%"}),  
+        ]),
+        
+        dbc.Col([
             dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
             dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
             dcc.Store(data=[], id="town_A_town_bar_check_state"),
-            dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'),
+            html.Div(children=[
+                html.Div("Number of Quantiles", style={"display": "inline-block", "width": "9%"}),
+                html.Div(dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'), style={"display": "inline-block", "width": "89%"}),
+            ]),
         ]),
     ]),
 
@@ -132,7 +137,7 @@ def town_A_town(town1, town2, dummy):
     prediction = get_optimal_player_1_bid(sub_df)
     prediction_text = f"Our model indicates the optimal bid for the {town1} player would be around {prediction}"
 
-    return boxplot, jitter, prediction_text, heroes_data, heroes_columns
+    return boxplot, jitter, prediction_text, heroes_data, heroes_columns 
 
 
 @app.callback(
