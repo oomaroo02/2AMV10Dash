@@ -28,12 +28,15 @@ app.layout = html.Div([
             html.Div(children=[
                 html.Div("Template Type", style={'display': 'inline-block', "width":"10%"}),
                 dcc.Dropdown(options = ["All"]+template_types, value="All", id="template_dropdown", style={'display': 'inline-block', "width":"35%"}),
+                html.Div("Color", style={'display': 'inline-block', "width":"10%"}),
+                dcc.Dropdown(options = ["any", "non-white", "red", "blue", "white"], value="any", id="color_dropdown", style={'display': 'inline-block', "width":"35%"}),
             ]),
         ]),
     ]),
 
     dbc.Row([
         dbc.Col(html.H3('Matchup Spread'), width=12),
+        html.Div("Matchups are only shown if at least 8 games were played"),
         dbc.Col(
             [dcc.Graph(id="town_V_town_graph", config={'displayModeBar': False}),
              dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"],
@@ -66,8 +69,8 @@ app.layout = html.Div([
             dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
             dcc.Store(data=[], id="town_A_town_bar_check_state"),
             html.Div(children=[
-                html.Div("Number of Quantiles", style={"display": "inline-block", "width": "9%"}),
-                html.Div(dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'), style={"display": "inline-block", "width": "89%"}),
+                html.Div("Number of Quantiles", style={"display": "inline-block", "width": "14%"}),
+                html.Div(dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'), style={"display": "inline-block", "width": "84%"}),
             ]),
         ]),
     ]),
@@ -79,9 +82,10 @@ app.layout = html.Div([
 # Define the callback for updating the dropdown menus based on the selected template
 @app.callback(
     [Output('dataset', 'data')],
-    [Input('template_dropdown', 'value')]
+    [Input('template_dropdown', 'value')],
+    [Input('color_dropdown', 'value')]
 )
-def update_dropdowns(template):
+def update_dropdowns(template, color):
     # Filter data based on the selected template
     global df, fig_winrate, fig_bidding, fig_bidding_variance, template_edit_counter
 
@@ -89,6 +93,11 @@ def update_dropdowns(template):
         df = copy(import_df)
     else:
         df = import_df[import_df['template_type'] == template]
+    
+    if color == "non-white":
+        df = df[df["color"] != "white"]
+    elif color != "any":
+        df = df[df["color"] == color]
 
     fig_winrate, fig_bidding, fig_bidding_variance = create_town_v_town_graphs(df)
 
