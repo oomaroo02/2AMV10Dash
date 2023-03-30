@@ -181,7 +181,7 @@ def town_A_town_jitter(sub_df):
     for i in range(len(y)):
         x.append(1 + (random() - 0.5))
 
-    figure = go.Figure(data=px.scatter(y=y, x=x, color=[str(x) for x in sub_df["result"]]))
+    figure = go.Figure(data=px.scatter(y=y, x=x, color=[{"0.0": "Loss", "1.0": "Victory", "0.5": "Tie"}[str(x)] for x in sub_df["result"]]))
     figure.update_layout(xaxis = {"fixedrange":True, "showgrid":False, "visible":False},
                          yaxis = {"title": "Bidding"},
                          title = "Bidding for Different Game Outcomes")
