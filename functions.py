@@ -4,6 +4,7 @@ os.environ["OMP_NUM_THREADS"] = "1"
 from random import random
 from statistics import stdev
 from sklearn.cluster import KMeans
+from copy import copy
 
 import plotly.express as px
 import pandas as pd
@@ -101,22 +102,29 @@ def town_v_town_bidding_variance_heatmap(int_df):
     return res
 
 
-def create_town_v_town_graphs(int_df):
+def create_town_v_town_graphs(int_df, highlights):
     res_winrate = town_v_town_winrate_heatmap(int_df)
     res_bidding = town_v_town_bidding_heatmap(int_df)
     res_bidding_variance = town_v_town_bidding_variance_heatmap(int_df)
 
+    res_winrate_text = copy(res_winrate)
+    res_bidding_text = copy(res_bidding)
+    res_bidding_variance_text = copy(res_bidding_variance)
+
+    for res in [res_winrate_text, res_bidding_text, res_bidding_variance_text]:
+        for highlight in highlights:
+            res[towns[::-1].index(highlight[0])][towns[::-1].index(highlight[1])] = f"> {res[towns[::-1].index(highlight[0])][towns[::-1].index(highlight[1])]} <"
+
     fig_winrate = go.Figure(
-        data=go.Heatmap(z=res_winrate, x=towns[::-1], y=towns[::-1], text=res_winrate, texttemplate="%{text}"),
+        data=go.Heatmap(z=res_winrate, x=towns[::-1], y=towns[::-1], text=res_winrate_text, texttemplate="%{text}", hovertemplate="Player 1: %{x}<br>Player 2: %{y}<br>Winrate: %{z}<extra></extra>"),
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town winrate"})
 
     fig_bidding = go.Figure(
-        data=go.Heatmap(z=res_bidding, x=towns[::-1], y=towns[::-1], text=res_bidding, texttemplate="%{text}"),
+        data=go.Heatmap(z=res_bidding, x=towns[::-1], y=towns[::-1], text=res_bidding_text, texttemplate="%{text}", hovertemplate="Player 1: %{x}<br>Player 2: %{y}<br>Mean Bidding: %{z}<extra></extra>"),
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town bidding"})
 
     fig_bidding_variance = go.Figure(
-        data=go.Heatmap(z=res_bidding_variance, x=towns[::-1], y=towns[::-1], text=res_bidding_variance,
-                        texttemplate="%{text}"),
+        data=go.Heatmap(z=res_bidding_variance, x=towns[::-1], y=towns[::-1], text=res_bidding_variance_text, texttemplate="%{text}", hovertemplate="Player 1: %{x}<br>Player 2: %{y}<br>Bidding Variance: %{z}<extra></extra>"),
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town bidding variance"})
    
     for fig in [fig_winrate, fig_bidding, fig_bidding_variance]:

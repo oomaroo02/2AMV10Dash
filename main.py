@@ -12,7 +12,9 @@ from functions import *
 
 import_df = pd.read_csv("set2.csv")
 df = copy(import_df)
-template_edit_counter = 0
+full_edit_counter = 0
+selection_edit_counter = 0
+town_edit_counter = 0
 
 # Create the app and set the theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -30,6 +32,7 @@ app.layout = html.Div([
                 dcc.Dropdown(options = ["All"]+template_types, value="All", id="template_dropdown", style={'display': 'inline-block', "width":"35%"}),
                 html.Div("Color", style={'display': 'inline-block', "width":"10%"}),
                 dcc.Dropdown(options = ["any", "non-white", "red", "blue", "white"], value="any", id="color_dropdown", style={'display': 'inline-block', "width":"35%"}),
+                html.Div(id="town_selection"),
             ]),
         ]),
     ]),
@@ -59,9 +62,9 @@ app.layout = html.Div([
             ]),]),
             
         html.Div(children=[
-            html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width":"20%", "height": "25%", 'font-size': '26px', "align":"center", 'align-items':'center', 'justify-content':'center'}),
-            html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"20%", "height": "25%"}),
-            html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"40%", "height": "25%"}),  
+            html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width":"19%", "height": "25%", 'font-size': '26px', "align":"center", 'align-items':'center', 'justify-content':'center'}),
+            html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"19%", "height": "25%"}),
+            html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"39%", "height": "25%"}),  
         ]),
         
         dbc.Col([
@@ -75,19 +78,23 @@ app.layout = html.Div([
         ]),
     ]),
 
-    dcc.Store(data = [0], id="dataset"),
+    dcc.Store(data = [0], id="dataset_full"),
+    dcc.Store(data = [0], id="dataset_selection"),
+    dcc.Store(data = [0], id="town_V_town_update"),
+    dcc.Store(data = [], id="selection"),
+    dcc.Store(id = "dummy"),
 ])
 
 
 # Define the callback for updating the dropdown menus based on the selected template
 @app.callback(
-    [Output('dataset', 'data')],
-    [Input('template_dropdown', 'value')],
-    [Input('color_dropdown', 'value')]
+    Output('dataset_full', 'data'),
+    Input('template_dropdown', 'value'),
+    Input('color_dropdown', 'value'),
 )
-def update_dropdowns(template, color):
+def update_df(template, color):
     # Filter data based on the selected template
-    global df, fig_winrate, fig_bidding, fig_bidding_variance, template_edit_counter
+    global df, full_edit_counter
 
     if template == "All":
         df = copy(import_df)
@@ -99,11 +106,59 @@ def update_dropdowns(template, color):
     elif color != "any":
         df = df[df["color"] == color]
 
-    fig_winrate, fig_bidding, fig_bidding_variance = create_town_v_town_graphs(df)
+    full_edit_counter += 1
 
-    template_edit_counter += 1
+    return [full_edit_counter]
 
-    return [template_edit_counter]
+
+@app.callback(
+    Output("town_selection", "children"),
+    Output("selection", "data"),
+    Input('town_V_town_graph', 'clickData'),
+    Input("selection", "data"),
+    Input("dataset_full", "data")
+    )
+def update_selection(click_data, selection, dummy):
+    if click_data != None:
+        selected = [click_data["points"][0]["y"], click_data["points"][0]["x"]]
+
+        if selected in selection:
+            selection.remove(selected)
+        else:
+            selection.append(selected)
+    
+    return str(selection), selection
+
+@app.callback(
+    Output("dataset_selection", "data"),
+    Input("selection", "data"),
+    Input("dataset_full", "data"),
+)
+def update_selection_df(selection, dummy):
+    global selection_df, selection_edit_counter
+
+    if selection != []:
+        selection_df = pd.concat([df[(df["player_one_town"] == i[0]) & (df["player_two_town"] == i[1])] for i in selection])
+    else:
+        selection_df = copy(df)
+
+    selection_edit_counter += 1
+
+    return [selection_edit_counter]
+
+
+@app.callback(
+    Output("town_V_town_update", "data"),
+    Input("selection", "data"),
+    Input('dataset_full', 'data')
+)
+def redo_town_V_town(selection, dummy):
+    global df, fig_winrate, fig_bidding, fig_bidding_variance, town_edit_counter
+    fig_winrate, fig_bidding, fig_bidding_variance = create_town_v_town_graphs(df, selection)
+    
+    town_edit_counter += 1
+    
+    return town_edit_counter
 
 
 @app.callback(
@@ -112,7 +167,7 @@ def update_dropdowns(template, color):
     Output("town_V_town_state", "data"),
     Input("town_V_town_check", "value"),
     Input("town_V_town_state", "data"),
-    Input("dataset", "data"))
+    Input("town_V_town_update", "data"))
 def update_section1(value, state, dummy):
     value = list(set(value) - set(state))
 
@@ -134,7 +189,7 @@ def update_section1(value, state, dummy):
     Output("town_A_town_heroes", "columns"),
     Input("town_A_town_dropdown_1", "value"),
     Input("town_A_town_dropdown_2", "value"),
-    Input("dataset", "data"))
+    Input("dataset_selection", "data"))
 def town_A_town(town1, town2, dummy):
     sub_df = copy(df[df["town"] == town1]) if town2 == "all" else copy(df[
         (df["town"] == town1) & (df["opponent_town"] == town2)])
@@ -158,7 +213,7 @@ def town_A_town(town1, town2, dummy):
     Input("town_A_town_bar_slider", "value"),
     Input("town_A_town_dropdown_1", "value"),
     Input("town_A_town_dropdown_2", "value"),
-    Input("dataset", "data"))
+    Input("dataset_selection", "data"))
 def town_graph(value, state, quantiles, town1, town2, dummy):
     sub_df = copy(df[df["town"] == town1]) if town2 == "all" else copy(df[
         (df["town"] == town1) & (df["opponent_town"] == town2)])
