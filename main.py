@@ -16,10 +16,8 @@ full_edit_counter = 0
 selection_edit_counter = 0
 town_edit_counter = 0
 
-# Create the app and set the theme
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-# Define the layout of the app
 app.layout = html.Div([
     dbc.Row([
         dbc.Col(html.H1('Dashboard'), width=12),
@@ -28,62 +26,76 @@ app.layout = html.Div([
     dbc.Row([
         dbc.Col([
             html.Div(children=[
-                html.Div("Template Type", style={'display': 'inline-block', "width":"10%"}),
-                dcc.Dropdown(options = ["All"]+template_types, value="All", id="template_dropdown", style={'display': 'inline-block', "width":"35%"}),
-                html.Div("Color", style={'display': 'inline-block', "width":"10%"}),
-                dcc.Dropdown(options = ["any", "non-white", "red", "blue", "white"], value="any", id="color_dropdown", style={'display': 'inline-block', "width":"35%"}),
+                html.Div("Template Type", style={'display': 'inline-block', "width": "10%"}),
+                dcc.Dropdown(options=["All"] + template_types, value="All", id="template_dropdown",
+                             style={'display': 'inline-block', "width": "35%"}),
+                html.Div("Color", style={'display': 'inline-block', "width": "10%"}),
+                dcc.Dropdown(options=["any", "non-white", "red", "blue", "white"], value="any", id="color_dropdown",
+                             style={'display': 'inline-block', "width": "35%"}),
                 html.Div(id="town_selection"),
             ]),
         ]),
     ]),
 
-    dbc.Row([
-        dbc.Col(html.H3('Matchup Spread'), width=12),
-        html.Div("Matchups are only shown if at least 8 games were played"),
-        dbc.Col(
-            [dcc.Graph(id="town_V_town_graph", config={'displayModeBar': False}),
-             dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"],
-                           id="town_V_town_check"),
-             dcc.Store(data=[], id="town_V_town_state"),
+    dcc.Tabs(id='tabs', children=[
+        dcc.Tab(label='Model', children=[
+            # Contents of Tab 1
         ]),
-    ]),
 
-    dbc.Row([
-        dbc.Col(html.H3('Matchup Analysis'), width=12),
-        dbc.Col([
-            html.Div(children=[
-                html.Div("Player 1", style={'display': 'inline-block', "width":"5%"}),
-                dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1', style={'display': 'inline-block', "width":"35%"}),
-                html.Div("Player 2", style={'display': 'inline-block', "width":"5%"}),
-                dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2', style={'display': 'inline-block',"width":"35%"})]),
-            
-            html.Div([html.Label("Hero Stats"),
-                      dash_table.DataTable(sort_action='native', id="town_A_town_heroes")
-            ]),]),
-            
-        html.Div(children=[
-            html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width":"19%", "height": "25%", 'font-size': '26px', "align":"center", 'align-items':'center', 'justify-content':'center'}),
-            html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"19%", "height": "25%"}),
-            html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width":"39%", "height": "25%"}),  
+        dcc.Tab(label='Heatmap', children=[
+            dbc.Row([
+                dbc.Col(html.H3('Matchup Spread'), width=12),
+                html.Div("Matchups are only shown if at least 8 games were played"),
+                dbc.Col([
+                    dcc.Graph(id="town_V_town_graph", config={'displayModeBar': False}),
+                    dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"], id="town_V_town_check"),
+                    dcc.Store(data=[], id="town_V_town_state"),
+                ]),
+            ]),
         ]),
-        
-        dbc.Col([
-            dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
-            dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
-            dcc.Store(data=[], id="town_A_town_bar_check_state"),
-            html.Div(children=[
-                html.Div("Number of Quantiles", style={"display": "inline-block", "width": "14%"}),
-                html.Div(dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'), style={"display": "inline-block", "width": "84%"}),
+
+        dcc.Tab(label='Graphs', children=[
+            dbc.Row([
+                dbc.Col(html.H3('Matchup Analysis'), width=12),
+                dbc.Col([
+                    html.Div(children=[
+                        html.Div("Player 1", style={'display': 'inline-block', "width": "5%"}),
+                        dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1', style={'display': 'inline-block', "width": "35%"}),
+                        html.Div("Player 2", style={'display': 'inline-block', "width": "5%"}),
+                        dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2', style={'display': 'inline-block', "width": "35%"})
+                    ]),
+                ]),
+                html.Div(children=[
+                    html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width": "19%", "height": "25%", 'font-size': '26px', "align": "center", 'align-items': 'center', 'justify-content': 'center'}),
+                    html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "19%", "height": "25%"}),
+                    html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "39%", "height": "25%"})
+                ]),
+                dbc.Col([
+                    dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
+                    dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
+                    dcc.Store(data=[], id="town_A_town_bar_check_state"),
+                    html.Div(children=[
+                        html.Div("Number of Quantiles", style={"display": "inline-block", "width": "14%"}),
+                        html.Div(dcc.Slider(min=1, max=10, step=1, value=5, id='town_A_town_bar_slider'), style={"display": "inline-block", "width": "84%"}),
+                    ]),
+                ]),
+            ]),
+        ]),
+
+        dcc.Tab(label='Table', children=[
+            dbc.Col([
+                html.Label("Hero Stats"),
+                dash_table.DataTable(sort_action='native', id="town_A_town_heroes")
             ]),
         ]),
     ]),
-
-    dcc.Store(data = [0], id="dataset_full"),
-    dcc.Store(data = [0], id="dataset_selection"),
-    dcc.Store(data = [0], id="town_V_town_update"),
-    dcc.Store(data = [], id="selection"),
-    dcc.Store(id = "dummy"),
+    dcc.Store(data=[0], id="dataset_full"),
+    dcc.Store(data=[0], id="dataset_selection"),
+    dcc.Store(data=[0], id="town_V_town_update"),
+    dcc.Store(data=[], id="selection"),
+    dcc.Store(id="dummy"),
 ])
+
 
 
 # Define the callback for updating the dropdown menus based on the selected template
