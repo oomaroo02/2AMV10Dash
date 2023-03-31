@@ -4,7 +4,7 @@ os.environ["OMP_NUM_THREADS"] = "1"
 from random import random
 from statistics import stdev
 from sklearn.cluster import KMeans
-from copy import copy
+from copy import copy, deepcopy
 
 import plotly.express as px
 import pandas as pd
@@ -107,9 +107,9 @@ def create_town_v_town_graphs(int_df, highlights):
     res_bidding = town_v_town_bidding_heatmap(int_df)
     res_bidding_variance = town_v_town_bidding_variance_heatmap(int_df)
 
-    res_winrate_text = copy(res_winrate)
-    res_bidding_text = copy(res_bidding)
-    res_bidding_variance_text = copy(res_bidding_variance)
+    res_winrate_text = deepcopy(res_winrate)
+    res_bidding_text = deepcopy(res_bidding)
+    res_bidding_variance_text = deepcopy(res_bidding_variance)
 
     for res in [res_winrate_text, res_bidding_text, res_bidding_variance_text]:
         for highlight in highlights:
