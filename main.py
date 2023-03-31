@@ -24,9 +24,9 @@ last_reset_button_counter = 0
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 app.layout = html.Div([
-    dbc.Row([
-        dbc.Col(html.H1('Dashboard'), width=12),
-    ]),
+    # dbc.Row([
+    #     dbc.Col(html.H1('Dashboard'), width=12),
+    # ]),
 
     dbc.Row([
         dbc.Col([
@@ -51,7 +51,10 @@ app.layout = html.Div([
         dcc.Tab(label='Heatmap', children=[
             dbc.Row([
                 dbc.Col(html.H3('Matchup Spread'), width=12),
-                html.Div("Matchups are only shown if at least 8 games were played"),
+                html.Div([
+                    html.Button("Reset Selection", id="reset_selection_button", style={"display": "inline-block"}),
+                    html.Div("Matchups are only shown if at least 8 games were played", style={"display": "inline-block"}),
+                ]),
                 dbc.Col([
                     dcc.Graph(id="town_V_town_graph", config={'displayModeBar': False}),
                     dcc.Checklist(options=["bidding", "win rate", "bidding variance"], value=["bidding"], id="town_V_town_check"),
@@ -63,18 +66,18 @@ app.layout = html.Div([
         dcc.Tab(label='Graphs', children=[
             dbc.Row([
                 dbc.Col(html.H3('Matchup Analysis'), width=12),
-                dbc.Col([
-                    html.Div(children=[
-                        html.Div("Player 1", style={'display': 'inline-block', "width": "5%"}),
-                        dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1', style={'display': 'inline-block', "width": "35%"}),
-                        html.Div("Player 2", style={'display': 'inline-block', "width": "5%"}),
-                        dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2', style={'display': 'inline-block', "width": "35%"})
-                    ]),
-                ]),
+                # dbc.Col([
+                #     html.Div(children=[
+                #         html.Div("Player 1", style={'display': 'inline-block', "width": "5%"}),
+                #         dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1', style={'display': 'inline-block', "width": "35%"}),
+                #         html.Div("Player 2", style={'display': 'inline-block', "width": "5%"}),
+                #         dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2', style={'display': 'inline-block', "width": "35%"})
+                #     ]),
+                # ]),
                 html.Div(children=[
                     html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width": "19%", "height": "25%", 'font-size': '26px', "align": "center", 'align-items': 'center', 'justify-content': 'center'}),
                     html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "19%", "height": "25%"}),
-                    html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "39%", "height": "25%"})
+                    html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "39%", "height": "25%"}),
                 ]),
                 dbc.Col([
                     dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
@@ -213,10 +216,8 @@ def update_section1(value, state, dummy):
     Output("town_A_town_prediction", "children"),
     Output("town_A_town_heroes", "data"),
     Output("town_A_town_heroes", "columns"),
-    Input("town_A_town_dropdown_1", "value"),
-    Input("town_A_town_dropdown_2", "value"),
     Input("dataset_selection", "data"))
-def town_A_town(town1, town2, dummy):
+def town_A_town(dummy):
     sub_df = selection_df
 
     boxplot = bidding_boxplot(sub_df)
@@ -229,11 +230,12 @@ def town_A_town(town1, town2, dummy):
     return boxplot, jitter, prediction_text, heroes_data, heroes_columns 
 
 
-# @app.callback(
-#     Input("town_A_town_jitter", "relayoutData"),
-#     Output("jitter_selection", "data")
-# )
-# def get_jitter_selection
+@app.callback(
+    Output("jitter_selection", "children"),
+    Input("town_A_town_jitter", "relayoutData"),
+)
+def get_jitter_selection(limits):
+    return str(limits)
 
 
 @app.callback(
@@ -243,10 +245,8 @@ def town_A_town(town1, town2, dummy):
     Input("town_A_town_bar_check", "value"),
     Input("town_A_town_bar_check_state", "data"),
     Input("town_A_town_bar_slider", "value"),
-    Input("town_A_town_dropdown_1", "value"),
-    Input("town_A_town_dropdown_2", "value"),
     Input("dataset_selection", "data"))
-def town_graph(value, state, quantiles, town1, town2, dummy):
+def town_graph(value, state, quantiles, dummy):
     sub_df = selection_df
 
     value = list(set(value) - set(state))
