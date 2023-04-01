@@ -15,7 +15,7 @@ df = copy(import_df)
 
 full_edit_counter = 0
 selection_edit_counter = 0
-town_edit_counter = 0
+limit_edit_counter = 0
 
 last_full_edit_counter = 0
 last_reset_button_counter = 0
@@ -100,6 +100,7 @@ app.layout = html.Div([
     ]),
     dcc.Store(data=[0], id="dataset_full"),
     dcc.Store(data=[0], id="dataset_selection"),
+    dcc.Store(data=[0], id="dataset_limit"),
     dcc.Store(data=[0], id="town_V_town_update"),
     dcc.Store(data=[], id="selection"),
     dcc.Store(id="dummy"),
@@ -211,31 +212,51 @@ def update_section1(value, state, dummy):
 
 
 @app.callback(
-    Output("town_A_town_boxplot", "figure"),
     Output("town_A_town_jitter", "figure"),
+    Input("dataset_selection", "data"))
+def update_jitter_graph(dummy):
+    sub_df = selection_df
+
+    jitter = town_A_town_jitter(sub_df)
+
+    return jitter
+
+
+@app.callback(
+    Output("jitter_selection", "children"),
+    Output("dataset_limit", "data"),
+    Input("town_A_town_jitter", "relayoutData"),
+    Input("dataset_selection", "data"),
+)
+def get_jitter_selection(limits, dummy):
+    global limit_df, limit_edit_counter
+
+    if limits == None or not (('yaxis.range[0]' in limits) and ('yaxis.range[1]' in limits)):
+        limit_df = copy(selection_df)
+    else:
+        limit_df = selection_df[(selection_df["bidding"] >= limits['yaxis.range[0]']) & (selection_df["bidding"] <= limits['yaxis.range[1]'])]
+
+    limit_edit_counter += 1
+
+    return str(limits), limit_edit_counter
+
+
+@app.callback(
+    Output("town_A_town_boxplot", "figure"),
     Output("town_A_town_prediction", "children"),
     Output("town_A_town_heroes", "data"),
     Output("town_A_town_heroes", "columns"),
-    Input("dataset_selection", "data"))
-def town_A_town(dummy):
-    sub_df = selection_df
+    Input("dataset_limit", "data"))
+def update_town_A_town_graphs(dummy):
+    sub_df = limit_df
 
     boxplot = bidding_boxplot(sub_df)
-    jitter = town_A_town_jitter(sub_df)
     heroes_data, heroes_columns = heroes_table(sub_df)
 
     prediction = get_optimal_player_1_bid(sub_df)
     prediction_text = f"Our model indicates the optimal bid for player 1 would be around {prediction}"
 
-    return boxplot, jitter, prediction_text, heroes_data, heroes_columns 
-
-
-@app.callback(
-    Output("jitter_selection", "children"),
-    Input("town_A_town_jitter", "relayoutData"),
-)
-def get_jitter_selection(limits):
-    return str(limits)
+    return boxplot, prediction_text, heroes_data, heroes_columns 
 
 
 @app.callback(
@@ -245,9 +266,9 @@ def get_jitter_selection(limits):
     Input("town_A_town_bar_check", "value"),
     Input("town_A_town_bar_check_state", "data"),
     Input("town_A_town_bar_slider", "value"),
-    Input("dataset_selection", "data"))
+    Input("dataset_limit", "data"))
 def town_graph(value, state, quantiles, dummy):
-    sub_df = selection_df
+    sub_df = limit_df
 
     value = list(set(value) - set(state))
 

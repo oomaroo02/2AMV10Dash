@@ -177,6 +177,10 @@ def heroes_table(sub_df):
                                columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
         table_df = pd.concat([table_df, new_row])
 
+    if len(table_df) > 23:
+        table_df = table_df.sort_values(by="Times Picked", ascending=False)
+        table_df = table_df.head(23)
+
     data = table_df.to_dict('records')
     columns = [{"name": i, "id": i} for i in table_df.columns]
     return data, columns
