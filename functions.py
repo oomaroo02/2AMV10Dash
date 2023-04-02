@@ -11,6 +11,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 
+# Defines for each town their heroes, as well as the default order of those heroes
 castle_heroes = ['Adelaide', 'Orrin', 'Valeska', 'Edric', 'Sylvia',
                  'Beatrice', 'Lord Haart', 'Sorsha', 'Christian',
                  'Tyris', 'Rion', 'Adela', 'Cuthbert', 'cuttbert', 'Ingham', 'Sanya', 'Loynis',
@@ -45,18 +46,23 @@ conflux_heroes = ['Pasis', 'Thunar', 'Ignissa', 'Lacus', 'Kalt', 'Fiur', 'Erdamo
 cove_heroes = ['Cassiopeia', 'Derek', 'Anabel', 'Illor', 'Tark', 'Corkes', 'Jeremy', 'Miriam', 'Elmore',
                'Leena', 'Eovacius', 'Astra', 'Andal', 'Manfred', 'Casmetra', 'Zilare', 'Spint', 'Dargem']
 
+# Defines the default order of the heroes
 towns = ["castle", "rampart", "tower", "inferno", "necropolis", "dungeon", "stronghold", "fortress", "conflux", "cove"]
 heroes_per_town = {"castle": castle_heroes, "rampart": rampart_heroes, "tower": tower_heroes, "inferno": inferno_heroes,
                    "necropolis": necropolis_heroes, "dungeon": dungeon_heroes, "stronghold": stronghold_heroes,
                    "fortress": fortress_heroes, "conflux": conflux_heroes, "cove": cove_heroes}
 
+# Makes all hero names lowercase
 for town in heroes_per_town:
     heroes_per_town[town] = [hero.lower() for hero in heroes_per_town[town]]
 
+
+# Full list of all heroes
 full_heroes = sum([heroes_per_town[i] for i in heroes_per_town], [])
 
 template_types = ["XL+U", "Mirror", "Jebus", "Duel", "Other"]
 
+# Creates the table used for the winrates matchup heatmap
 def town_v_town_winrate_heatmap(int_df):
     res = []
     for town in towns[::-1]:
@@ -72,6 +78,7 @@ def town_v_town_winrate_heatmap(int_df):
     return res
 
 
+# Creates the table used for the mean bidding matchup heatmap
 def town_v_town_bidding_heatmap(int_df):
     res = []
     for town in towns[::-1]:
@@ -87,6 +94,7 @@ def town_v_town_bidding_heatmap(int_df):
     return res
 
 
+# Creates the table used for the bidding variance matchup heatmap
 def town_v_town_bidding_variance_heatmap(int_df):
     res = []
     for town in towns[::-1]:
@@ -102,11 +110,13 @@ def town_v_town_bidding_variance_heatmap(int_df):
     return res
 
 
+# Creates all different heatmaps
 def create_town_v_town_graphs(int_df, highlights):
     res_winrate = town_v_town_winrate_heatmap(int_df)
     res_bidding = town_v_town_bidding_heatmap(int_df)
     res_bidding_variance = town_v_town_bidding_variance_heatmap(int_df)
 
+    # Below parts changes the text of selected squares to have '> text <' instead of 'text'
     res_winrate_text = deepcopy(res_winrate)
     res_bidding_text = deepcopy(res_bidding)
     res_bidding_variance_text = deepcopy(res_bidding_variance)
@@ -128,24 +138,28 @@ def create_town_v_town_graphs(int_df, highlights):
         layout={"xaxis_title": 'Opponent Town', "yaxis_title": 'Player Town', "title": "Town V Town bidding variance"})
    
     for fig in [fig_winrate, fig_bidding, fig_bidding_variance]:
-        fig.update_layout(xaxis = {"fixedrange":True}, yaxis = {"fixedrange":True})
+        fig.update_layout(xaxis = {"fixedrange":True}, yaxis = {"fixedrange":True}) # Disables scrolling
 
     return fig_winrate, fig_bidding, fig_bidding_variance
 
 
+# Creates the quantiles bar graph of a certain variable
 def variable_result_graph(sub_df, variable, amount_quantiles):
+
+    # Determines the quantile limits
     quantiles = []
     for i in [i * (1 / amount_quantiles) for i in range(amount_quantiles + 1)]:
         quantiles.append(int(sub_df[variable].quantile(i)))
 
+    # Column names
     names = [f"{quantiles[i]} <-> {quantiles[i + 1]}" for i in range(amount_quantiles)]
+
+    # Adds a new row to signify the quantile
     for i in range(amount_quantiles):
         sub_df.loc[((sub_df[variable] >= quantiles[i]) &
                     (sub_df[variable] <= quantiles[i + 1])), f"{variable} quantiles"] = names[i]
 
-    # sub_df.loc[sub_df["bidding"] <= 0, "bidding quantiles"] = np.nan
-    # sub_df.loc[sub_df["color"] == "blue", "turns quantiles"] = np.nan
-
+    # Gets the winrate of each quantile
     y = []
     for i in names:
         y.append(round(sub_df[sub_df[f"{variable} quantiles"] == i]["result"].mean(), 2))
@@ -158,17 +172,21 @@ def variable_result_graph(sub_df, variable, amount_quantiles):
     return figure
 
 
+# Creates the table with data per hero
 def heroes_table(sub_df):
     sub_heroes = set(sub_df["hero"])
     sub_heroes = [hero for hero in full_heroes if hero in sub_heroes]
 
-    table_df = pd.DataFrame(
-        columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
+    # Sets up the table
+    table_df = pd.DataFrame(columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
+
+    # Creates the row for all heros
     new_row = pd.DataFrame([["all", round(sub_df["bidding"].mean(), 2), round(sub_df["result"].mean(), 2), 1,
                              len(sub_df), round(sub_df["turns"].mean(), 2)]],
                            columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
     table_df = pd.concat([table_df, new_row])
 
+    # For each hero create a row on the table
     for hero in sub_heroes:
         sub_sub_df = sub_df[sub_df["hero"] == hero]
         new_row = pd.DataFrame([[hero, round(sub_sub_df["bidding"].mean()), round(sub_sub_df["result"].mean(), 2),
@@ -177,6 +195,7 @@ def heroes_table(sub_df):
                                columns=["Hero", "Mean Bidding", "Winrate", "Pickrate", "Times Picked", "Mean Turns"])
         table_df = pd.concat([table_df, new_row])
 
+    # Limits the length of the table to not have vertical scrolling
     if len(table_df) > 23:
         table_df = table_df.sort_values(by="Times Picked", ascending=False)
         table_df = table_df.head(23)
@@ -186,9 +205,11 @@ def heroes_table(sub_df):
     return data, columns
 
 
+# Creates the jitter plot
 def town_A_town_jitter(sub_df):
     y = list(sub_df["bidding"])
 
+    # Randomly move the point along the x axis
     x = []
     for i in range(len(y)):
         x.append(1 + (random() - 0.5))
@@ -198,9 +219,10 @@ def town_A_town_jitter(sub_df):
                          yaxis = {"title": "Bidding"},
                          title = "Bidding for Different Game Outcomes")
 
-
     return figure
 
+
+# Makes the bidding boxplot
 def bidding_boxplot(sub_df):
     figure = go.Figure(data=px.box(sub_df, y="bidding"))
     figure.update_layout(xaxis = {"fixedrange":True, "showgrid":False, "visible":False},
@@ -210,6 +232,9 @@ def bidding_boxplot(sub_df):
     return figure
 
 
+# A model which calculates the optimal amount to bid for player one in the given dataframe
+# Calculates a kmeans cluster location for the people who have won and those who lost
+# The location right inbetween those is theoraticly the best
 def get_optimal_player_1_bid(df):
     '''plug in a town vs. town dataframe'''
     

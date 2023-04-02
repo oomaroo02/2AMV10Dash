@@ -13,6 +13,7 @@ from functions import *
 import_df = pd.read_csv("set2.csv")
 df = copy(import_df)
 
+# These counters are used to keep track when selections on the graph change
 full_edit_counter = 0
 selection_edit_counter = 0
 limit_edit_counter = 0
@@ -27,7 +28,8 @@ app.layout = html.Div([
     # dbc.Row([
     #     dbc.Col(html.H1('Dashboard'), width=12),
     # ]),
-
+    
+    # The upper filter bar
     html.Div(children=[
         html.Div("Template Type", style={'display': 'inline-block', "width": "10%"}),
         dcc.Dropdown(options=["All"] + template_types, value="All", id="template_dropdown",
@@ -35,15 +37,21 @@ app.layout = html.Div([
         html.Div("Color", style={'display': 'inline-block', "width": "10%"}),
         dcc.Dropdown(options=["any", "non-white", "red", "blue", "white"], value="any", id="color_dropdown",
                      style={'display': 'inline-block', "width": "30%"}),
-    ], style={"width": "90%"}),
+    ]),
+
+    # Used for debugging
     html.Div(id="town_selection"),
     html.Div(id="jitter_selection"),
 
+    # The four tabs
     dcc.Tabs(id='tabs', children=[
+    
+        # Tab with the model
         dcc.Tab(label='Model', children=[
             # Contents of Tab 1
         ]),
 
+        # Tab with the town versus town matchup heatmap
         dcc.Tab(label='Heatmap', children=[
             dbc.Col(html.H3('Matchup Spread'), width=12),
 
@@ -57,22 +65,15 @@ app.layout = html.Div([
             ]),
         ]),
 
+        # Tab with the different 'bidding' graphs
         dcc.Tab(label='Graphs', children=[
             dbc.Col(html.H3('Matchup Analysis'), width=12),
-            # dbc.Col([
-            #     html.Div(children=[
-            #         html.Div("Player 1", style={'display': 'inline-block', "width": "5%"}),
-            #         dcc.Dropdown(towns, value=towns[0], id='town_A_town_dropdown_1', style={'display': 'inline-block', "width": "35%"}),
-            #         html.Div("Player 2", style={'display': 'inline-block', "width": "5%"}),
-            #         dcc.Dropdown(["all"] + towns, value="all", id='town_A_town_dropdown_2', style={'display': 'inline-block', "width": "35%"})
-            #     ]),
-            # ]),
             html.Div(children=[
-                html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width": "19%", "height": "25%", 'font-size': '26px', "align": "center", 'align-items': 'center', 'justify-content': 'center'}),
-                html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "19%", "height": "25%"}),
                 html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "39%", "height": "25%"}),
+                html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "19%", "height": "25%"}),
+                html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width": "19%", "height": "25%", 'font-size': '26px'}),
             ]),
-            dbc.Col([
+            html.Div(children=[
                 dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
                 dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
                 dcc.Store(data=[], id="town_A_town_bar_check_state"),
@@ -83,6 +84,7 @@ app.layout = html.Div([
             ]),
         ]),
 
+        # Tab with the hero table
         dcc.Tab(label='Table', children=[
             dbc.Col([
                 html.Label("Hero Stats"),
@@ -90,24 +92,23 @@ app.layout = html.Div([
             ]),
         ]),
     ]),
-    dcc.Store(data=[0], id="dataset_full"),
-    dcc.Store(data=[0], id="dataset_selection"),
-    dcc.Store(data=[0], id="dataset_limit"),
-    dcc.Store(data=[0], id="town_V_town_update"),
-    dcc.Store(data=[], id="selection"),
-    dcc.Store(id="dummy"),
+
+    dcc.Store(data=[0], id="dataset_full"), # Keeps track when the filtering changes
+    dcc.Store(data=[0], id="dataset_selection"), # Keeps track when the selection on the heatmap changes
+    dcc.Store(data=[0], id="dataset_limit"), # Keeps track of when the bidding limits on the jitter graph change
+    dcc.Store(data=[], id="selection"), # Keeps track of teh selection on the heatmap
+    dcc.Store(id="dummy"), # Used for debugging
 ])
 
 
 
-# Define the callback for updating the dropdown menus based on the selected template
+# Filter data based on the selected template and selected color
 @app.callback(
     Output('dataset_full', 'data'),
     Input('template_dropdown', 'value'),
     Input('color_dropdown', 'value'),
 )
 def update_df(template, color):
-    # Filter data based on the selected template
     global df, full_edit_counter
 
     if template == "All":
@@ -125,6 +126,7 @@ def update_df(template, color):
     return [full_edit_counter]
 
 
+# Updates the 'selection' data whenever matchups in the heatmap are selected
 @app.callback(
     Output("town_selection", "children"),
     Output("selection", "data"),
@@ -136,13 +138,14 @@ def update_df(template, color):
 def update_selection(click_data, selection, reset_button, dummy):
     global last_reset_button_counter
 
-    if reset_button != last_reset_button_counter:
+    if reset_button != last_reset_button_counter: # If the reset button was pressed
         selection = []
         last_reset_button_counter = reset_button
 
-    elif click_data != None:
+    elif click_data != None: # If something was clicked
         selected = [click_data["points"][0]["y"], click_data["points"][0]["x"]]
 
+        # If already selected deselect, otherwise select matchup
         if selected in selection:
             selection.remove(selected)
         else:
@@ -150,6 +153,9 @@ def update_selection(click_data, selection, reset_button, dummy):
     
     return str(selection), selection
 
+
+# Updates the selection data whenever either the full data or the selection changes
+# Also updates the heatmap
 @app.callback(
     Output("dataset_selection", "data"),
     Input("selection", "data"),
@@ -159,15 +165,16 @@ def update_selection_df(selection, dummy):
     global fig_winrate, fig_bidding, fig_bidding_variance
     global selection_df, selection_edit_counter, last_full_edit_counter
 
-    if selection != []:
+
+    if selection != []: # If there are mathcups selected
         selection_df = pd.concat([df[(df["town"] == i[0]) & (df["opponent_town"] == i[1])] for i in selection])
     else:
         selection_df = copy(df)
 
-    if last_full_edit_counter != dummy:
+    if last_full_edit_counter != dummy: # If the filtering was changed
         fig_winrate, fig_bidding, fig_bidding_variance = create_town_v_town_graphs(df, selection)
 
-    else:
+    else: # update the visual selection without rerunning graph creation
         for fig in [fig_winrate, fig_bidding, fig_bidding_variance]:
             text = deepcopy(fig.data[0]["z"])
 
@@ -176,13 +183,13 @@ def update_selection_df(selection, dummy):
             
             fig.data[0]["text"] = text
 
-
     last_full_edit_counter = dummy
     selection_edit_counter += 1
 
     return [selection_edit_counter]
 
 
+# Allows for switching between the different heatmaps
 @app.callback(
     Output("town_V_town_graph", "figure"),
     Output("town_V_town_check", "value"),
@@ -191,7 +198,7 @@ def update_selection_df(selection, dummy):
     Input("town_V_town_state", "data"),
     Input("dataset_selection", "data"))
 def update_section1(value, state, dummy):
-    value = list(set(value) - set(state))
+    value = list(set(value) - set(state)) # Turns value into the checkbox that was just checked
 
     if value == ["bidding"] or (value == [] and state == ["bidding"]):
         return fig_bidding, ["bidding"], ["bidding"]
@@ -203,6 +210,7 @@ def update_section1(value, state, dummy):
         return fig_bidding_variance, ["bidding variance"], ["bidding variance"]
 
 
+# Creates the jitter graph and updates it when the data changes
 @app.callback(
     Output("town_A_town_jitter", "figure"),
     Input("dataset_selection", "data"))
@@ -214,6 +222,7 @@ def update_jitter_graph(dummy):
     return jitter
 
 
+# Changes the data used for the non-heatmap/jitter graph when the jitter graph is zomed
 @app.callback(
     Output("jitter_selection", "children"),
     Output("dataset_limit", "data"),
@@ -233,6 +242,7 @@ def get_jitter_selection(limits, dummy):
     return str(limits), limit_edit_counter
 
 
+# Handles the boxplot, prediction text and hero table
 @app.callback(
     Output("town_A_town_boxplot", "figure"),
     Output("town_A_town_prediction", "children"),
@@ -251,6 +261,7 @@ def update_town_A_town_graphs(dummy):
     return boxplot, prediction_text, heroes_data, heroes_columns 
 
 
+# Handles the bar graph and its checkboxes and quantiles slider
 @app.callback(
     Output("town_A_town_bar", "figure"),
     Output("town_A_town_bar_check", "value"),
@@ -268,5 +279,8 @@ def town_graph(value, state, quantiles, dummy):
     graph = variable_result_graph(sub_df, graph_value[0], quantiles)
     return graph, graph_value, graph_value
 
+
+
 if __name__ == '__main__':
+    # Runs the app
     app.run_server(debug=True)
