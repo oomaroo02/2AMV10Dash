@@ -40,8 +40,8 @@ app.layout = html.Div([
     ]),
 
     # Used for debugging
-    html.Div(id="town_selection"),
-    html.Div(id="jitter_selection"),
+    # html.Div(id="town_selection"),
+    # html.Div(id="jitter_selection"),
 
     # The four tabs
     dcc.Tabs(id='tabs', children=[
@@ -67,14 +67,15 @@ app.layout = html.Div([
 
         # Tab with the different 'bidding' graphs
         dcc.Tab(label='Graphs', children=[
-            dbc.Col(html.H3('Matchup Analysis'), width=12),
-            html.Div(children=[
-                html.Div(dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "39%", "height": "25%"}),
-                html.Div(dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}), style={'display': 'inline-block', "width": "19%", "height": "25%"}),
-                html.Div(id='town_A_town_prediction', style={'display': 'inline-block', "width": "19%", "height": "25%", 'font-size': '26px'}),
+            #dbc.Col(html.H3('Matchup Analysis'), width=12),
+            html.Div(children=[ 
+                dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}, style={'display': 'inline-block', "width": "39%", "height": "35vh"}),
+                dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}, style={'display': 'inline-block', "width": "19%", "height": "35vh"}),
+                html.Span(id='town_A_town_prediction', style={'display': 'inline-block', "width": "19%",'fontSize': '16px', "height": "1vh"}),
             ]),
+            
             html.Div(children=[
-                dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}),
+                dcc.Graph(id="town_A_town_bar", config={'displayModeBar': False}, style={"height": "40vh"}),
                 dcc.Checklist(options=["bidding", "turns"], value=["bidding"], id="town_A_town_bar_check"),
                 dcc.Store(data=[], id="town_A_town_bar_check_state"),
                 html.Div(children=[
@@ -128,8 +129,8 @@ def update_df(template, color):
 
 # Updates the 'selection' data whenever matchups in the heatmap are selected
 @app.callback(
-    Output("town_selection", "children"),
     Output("selection", "data"),
+    # Output("town_selection", "children"),
     Input('town_V_town_graph', 'clickData'),
     Input("selection", "data"),
     Input("reset_selection_button", "n_clicks"),
@@ -151,7 +152,7 @@ def update_selection(click_data, selection, reset_button, dummy):
         else:
             selection.append(selected)
     
-    return str(selection), selection
+    return selection #, str(selection)
 
 
 # Updates the selection data whenever either the full data or the selection changes
@@ -222,10 +223,11 @@ def update_jitter_graph(dummy):
     return jitter
 
 
-# Changes the data used for the non-heatmap/jitter graph when the jitter graph is zomed
+# Changes the data used for the non-heatmap/jitter graph when the jitter graph is zoomed
+# KNOWN BUG: relayoutData resets whenever you change to a different tab and back
 @app.callback(
-    Output("jitter_selection", "children"),
     Output("dataset_limit", "data"),
+    # Output("jitter_selection", "children"),
     Input("town_A_town_jitter", "relayoutData"),
     Input("dataset_selection", "data"),
 )
@@ -239,7 +241,7 @@ def get_jitter_selection(limits, dummy):
 
     limit_edit_counter += 1
 
-    return str(limits), limit_edit_counter
+    return limit_edit_counter #, str(limits)
 
 
 # Handles the boxplot, prediction text and hero table
