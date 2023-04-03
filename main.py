@@ -48,7 +48,12 @@ app.layout = html.Div([
     
         # Tab with the model
         dcc.Tab(label='Model', children=[
-            # Contents of Tab 1
+            dcc.Dropdown(towns, placeholder="town (player 1)", id='model_town_1'),
+            dcc.Dropdown([], placeholder="hero (player 1)", id='model_hero_1'),
+            dcc.Input(type="number", placeholder="bidding (player 1)", id="model_bidding"),
+            dcc.Dropdown(towns, placeholder="town (player 2)", id='model_town_2'),
+            dcc.Dropdown([], placeholder="hero (player 2)", id='model_hero_2'),
+            html.Div(id='model_result'),
         ]),
 
         # Tab with the town versus town matchup heatmap
@@ -67,7 +72,6 @@ app.layout = html.Div([
 
         # Tab with the different 'bidding' graphs
         dcc.Tab(label='Graphs', children=[
-            #dbc.Col(html.H3('Matchup Analysis'), width=12),
             html.Div(children=[ 
                 dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}, style={'display': 'inline-block', "width": "39%", "height": "35vh"}),
                 dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}, style={'display': 'inline-block', "width": "19%", "height": "35vh"}),
@@ -103,6 +107,45 @@ app.layout = html.Div([
 
 
 
+# For the model dropdown where the heros are chosen, make the dropdowns show the heros for the currently selected town
+@app.callback(
+    Output("model_hero_1", "options"),
+    Input("model_town_1", "value"),
+)
+def update_hero1_dropdown(town):
+    if town in towns:
+        return heroes_per_town[town]
+    return []
+
+
+@app.callback(
+    Output("model_hero_2", "options"),
+    Input("model_town_2", "value"),
+)
+def update_hero1_dropdown(town):
+    if town in towns:
+        return heroes_per_town[town]
+    return []
+
+
+# Runs teh model
+@app.callback(
+    Output("model_result", "children"),
+    Input("model_town_1", "value"),
+    Input("model_town_2", "value"),
+    Input("model_bidding", "value"),
+    Input("model_hero_1", "value"),
+    Input("model_hero_2", "value"),
+)
+def update_model(town1, town2, bidding, hero1, hero2):
+    if (town1 not in towns) or (town2 not in towns) or (hero1 not in full_heroes) or (hero2 not in full_heroes):
+        return "Incorrect/Incomplete Input"
+
+    result = run_model(town1, town2, bidding)
+
+    return f"Expected winrate is {result}"
+    
+    
 # Filter data based on the selected template and selected color
 @app.callback(
     Output('dataset_full', 'data'),
@@ -198,7 +241,7 @@ def update_selection_df(selection, dummy):
     Input("town_V_town_check", "value"),
     Input("town_V_town_state", "data"),
     Input("dataset_selection", "data"))
-def update_section1(value, state, dummy):
+def update_heatmap(value, state, dummy):
     value = list(set(value) - set(state)) # Turns value into the checkbox that was just checked
 
     if value == ["bidding"] or (value == [] and state == ["bidding"]):
@@ -272,7 +315,7 @@ def update_town_A_town_graphs(dummy):
     Input("town_A_town_bar_check_state", "data"),
     Input("town_A_town_bar_slider", "value"),
     Input("dataset_limit", "data"))
-def town_graph(value, state, quantiles, dummy):
+def update_bar_graph(value, state, quantiles, dummy):
     sub_df = limit_df
 
     value = list(set(value) - set(state))

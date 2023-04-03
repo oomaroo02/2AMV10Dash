@@ -250,3 +250,7 @@ def get_optimal_player_1_bid(df):
     optimal_value =  int((kmeans_won.cluster_centers_[0][0] + kmeans_lost.cluster_centers_[0][0])/2)
     
     return optimal_value
+
+
+def run_model(town1, town2, bidding):
+    return 0
