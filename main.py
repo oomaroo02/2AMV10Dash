@@ -290,13 +290,17 @@ def update_heatmap(value, state, dummy):
 # Creates the jitter graph and updates it when the data changes
 @app.callback(
     Output("town_A_town_jitter", "figure"),
+    Output("town_A_town_prediction", "children"),
     Input("dataset_selection", "data"))
 def update_jitter_graph(dummy):
     sub_df = selection_df
 
-    jitter = town_A_town_jitter(sub_df)
+    prediction = get_optimal_player_1_bid(sub_df)
+    prediction_text = f"Our model indicates the optimal bid for player 1 would be around {prediction}"
 
-    return jitter
+    jitter = town_A_town_jitter(sub_df, prediction)
+
+    return jitter, prediction_text
 
 
 # Changes the data used for the non-heatmap/jitter graph when the jitter graph is zoomed
@@ -322,7 +326,6 @@ def get_jitter_selection(limits, dummy):
 # Handles the boxplot, prediction text and hero table
 @app.callback(
     Output("town_A_town_boxplot", "figure"),
-    Output("town_A_town_prediction", "children"),
     Output("town_A_town_heroes", "data"),
     Output("town_A_town_heroes", "columns"),
     Input("dataset_limit", "data"))
@@ -332,10 +335,7 @@ def update_town_A_town_graphs(dummy):
     boxplot = bidding_boxplot(sub_df)
     heroes_data, heroes_columns = heroes_table(sub_df)
 
-    prediction = get_optimal_player_1_bid(sub_df)
-    prediction_text = f"Our model indicates the optimal bid for player 1 would be around {prediction}"
-
-    return boxplot, prediction_text, heroes_data, heroes_columns 
+    return boxplot, heroes_data, heroes_columns 
 
 
 # Handles the bar graph and its checkboxes and quantiles slider

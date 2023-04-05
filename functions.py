@@ -208,7 +208,7 @@ def heroes_table(sub_df):
 
 
 # Creates the jitter plot
-def town_A_town_jitter(sub_df):
+def town_A_town_jitter(sub_df, prediction):
     y = list(sub_df["bidding"])
 
     # Randomly move the point along the x axis
@@ -219,7 +219,10 @@ def town_A_town_jitter(sub_df):
     figure = go.Figure(data=px.scatter(y=y, x=x, color=[{"0.0": "Loss", "1.0": "Victory", "0.5": "Tie"}[str(x)] for x in sub_df["result"]]))
     figure.update_layout(xaxis = {"fixedrange":True, "showgrid":False, "visible":False},
                          yaxis = {"title": "Bidding"},
-                         title = "Bidding for Different Game Outcomes")
+                         title = "Bidding for Different Game Outcomes",
+                         shapes = [{'type': 'line','x0': 0.5,'y0': prediction,'x1': 1.5,'y1': prediction,
+                                    'line': {'color': 'rgb(0, 0, 0)','width': 2},
+        }])
 
     return figure
 
