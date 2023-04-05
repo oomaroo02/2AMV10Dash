@@ -48,11 +48,11 @@ app.layout = html.Div([
     
         # Tab with the model
         dcc.Tab(label='Model', children=[
-            dcc.Dropdown(towns, placeholder="town (player 1)", id='model_town_1'),
-            dcc.Dropdown([], placeholder="hero (player 1)", id='model_hero_1'),
-            dcc.Input(type="number", placeholder="bidding (player 1)", id="model_bidding"),
-            dcc.Dropdown(towns, placeholder="town (player 2)", id='model_town_2'),
-            dcc.Dropdown([], placeholder="hero (player 2)", id='model_hero_2'),
+            html.Div(dcc.Dropdown(towns, placeholder="town (player 1)", id='model_town_1'), style={"width": "30%"}),
+            html.Div(dcc.Dropdown([], placeholder="hero (player 1)", id='model_hero_1'), style={"width": "30%"}),
+            dcc.Input(type="number", placeholder="bidding (player 1's perspective)", id="model_bidding", style={"width": "30%"}),
+            html.Div(dcc.Dropdown(towns, placeholder="town (player 2)", id='model_town_2'), style={"width": "30%"}),
+            html.Div(dcc.Dropdown([], placeholder="hero (player 2)", id='model_hero_2'), style={"width": "30%"}),
             html.Div(id='model_result'),
         ]),
 
@@ -110,25 +110,27 @@ app.layout = html.Div([
 # For the model dropdown where the heros are chosen, make the dropdowns show the heros for the currently selected town
 @app.callback(
     Output("model_hero_1", "options"),
+    Output("model_hero_1", "placeholder"),
     Input("model_town_1", "value"),
 )
 def update_hero1_dropdown(town):
     if town in towns:
-        return heroes_per_town[town]
-    return []
+        return heroes_per_town[town], f"{town} hero (player 1)"
+    return [], "hero (player 1)"
 
 
 @app.callback(
     Output("model_hero_2", "options"),
+    Output("model_hero_2", "placeholder"),
     Input("model_town_2", "value"),
 )
-def update_hero1_dropdown(town):
+def update_hero2_dropdown(town):
     if town in towns:
-        return heroes_per_town[town]
-    return []
+        return heroes_per_town[town], f"{town} hero (player 2)"
+    return [], "hero (player 2)"
 
 
-# Runs teh model
+# Runs the model
 @app.callback(
     Output("model_result", "children"),
     Input("model_town_1", "value"),
@@ -138,10 +140,22 @@ def update_hero1_dropdown(town):
     Input("model_hero_2", "value"),
 )
 def update_model(town1, town2, bidding, hero1, hero2):
-    if (town1 not in towns) or (town2 not in towns) or (hero1 not in full_heroes) or (hero2 not in full_heroes):
-        return "Incorrect/Incomplete Input"
-
-    result = run_model(town1, town2, bidding)
+    if (town1 not in towns):
+        return "No town for player 1"
+    
+    elif (town2 not in towns):
+        return "No town for player 2"
+    
+    elif (not bidding):
+        return "No bidding added"
+    
+    elif (hero1 not in heroes_per_town[town1]):
+        return "No hero for player 1"
+    
+    elif (hero2 not in heroes_per_town[town2]):
+        return "No hero for player 2"
+    
+    result = run_model(town1, town2, int(bidding))
 
     return f"Expected winrate is {result}"
     
@@ -270,7 +284,6 @@ def update_jitter_graph(dummy):
 # KNOWN BUG: relayoutData resets whenever you change to a different tab and back
 @app.callback(
     Output("dataset_limit", "data"),
-    # Output("jitter_selection", "children"),
     Input("town_A_town_jitter", "relayoutData"),
     Input("dataset_selection", "data"),
 )
@@ -284,7 +297,7 @@ def get_jitter_selection(limits, dummy):
 
     limit_edit_counter += 1
 
-    return limit_edit_counter #, str(limits)
+    return limit_edit_counter
 
 
 # Handles the boxplot, prediction text and hero table
