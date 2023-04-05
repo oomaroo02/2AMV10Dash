@@ -47,7 +47,7 @@ app.layout = html.Div([
     dcc.Tabs(id='tabs', children=[
     
         # Tab with the model
-        dcc.Tab(label='Model', children=[
+        dcc.Tab(label='Winrate Prediction', children=[
             html.Div("Below you can fill in different variables for a prediction model.\nIf you want to include hero in your analysis you can fill those in, but it might decrease accuracy."),
             html.Div(dcc.Dropdown(towns, placeholder="town (player 1)", id='model_town_1'), style={"width": "30%"}),
             html.Div(dcc.Dropdown([], placeholder="hero (player 1)", id='model_hero_1'), style={"width": "30%"}),
@@ -58,7 +58,7 @@ app.layout = html.Div([
         ]),
 
         # Tab with the town versus town matchup heatmap
-        dcc.Tab(label='Heatmap', children=[
+        dcc.Tab(label='Matchup Spread', children=[
             dbc.Col(html.H3('Matchup Spread'), width=12),
 
             html.Div("Matchups are only shown if at least 8 games were played"),
@@ -72,7 +72,7 @@ app.layout = html.Div([
         ]),
 
         # Tab with the different 'bidding' graphs
-        dcc.Tab(label='Graphs', children=[
+        dcc.Tab(label='Bidding Analysis', children=[
             html.Div(children=[ 
                 dcc.Graph(id="town_A_town_jitter", config={'displayModeBar': False}, style={'display': 'inline-block', "width": "39%", "height": "35vh"}),
                 dcc.Graph(id="town_A_town_boxplot", config={'displayModeBar': False}, style={'display': 'inline-block', "width": "19%", "height": "35vh"}),
@@ -91,7 +91,7 @@ app.layout = html.Div([
         ]),
 
         # Tab with the hero table
-        dcc.Tab(label='Table', children=[
+        dcc.Tab(label='Hero Analysis', children=[
             dbc.Col([
                 html.Label("Hero Stats"),
                 dash_table.DataTable(sort_action='native', id="town_A_town_heroes")

@@ -220,7 +220,7 @@ def town_A_town_jitter(sub_df, prediction):
     figure.update_layout(xaxis = {"fixedrange":True, "showgrid":False, "visible":False},
                          yaxis = {"title": "Bidding"},
                          title = "Bidding for Different Game Outcomes",
-                         shapes = [{'type': 'line','x0': 0.5,'y0': prediction,'x1': 1.5,'y1': prediction,
+                         shapes = [{'type': 'line','x0': 0.3,'y0': prediction,'x1': 1.7,'y1': prediction,
                                     'line': {'color': 'rgb(0, 0, 0)','width': 2},
         }])
 
