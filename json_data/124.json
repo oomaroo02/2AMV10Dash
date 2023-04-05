@@ -1,0 +1,2931 @@
+{
+    "count": 13151,
+    "next": "https://www.h3.gg/api/v1/matches?format=json&page=125",
+    "previous": "https://www.h3.gg/api/v1/matches?format=json&page=123",
+    "results": [
+        {
+            "pk": 16666,
+            "player_one": {
+                "pk": 3644,
+                "username": "wyryzmol",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "TeamSpeakUser",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "wyryzmol"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 1947,
+                "username": "Promeit",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Promeit#8244",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/peepocute.webp",
+                    "hota_lobby_nick": "Promeit"
+                }
+            },
+            "score_player_two": 2,
+            "winner": {
+                "pk": 1947,
+                "username": "Promeit",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Promeit#8244",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/peepocute.webp",
+                    "hota_lobby_nick": "Promeit"
+                }
+            },
+            "finished": true,
+            "reportinphase_set": [
+                {
+                    "pk": 14274,
+                    "winner": {
+                        "pk": 1947,
+                        "username": "Promeit",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Promeit#8244",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/peepocute.webp",
+                            "hota_lobby_nick": "Promeit"
+                        }
+                    },
+                    "source": {
+                        "pk": 1947,
+                        "username": "Promeit",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Promeit#8244",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/peepocute.webp",
+                            "hota_lobby_nick": "Promeit"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 839,
+                        "username": "Maester",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Maester",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/ae8457cd-ee86-45d0-97c5-e29ff1c0a737---ladny-dzika-ilustracja-kreskowka_53876-66606.jpg",
+                            "hota_lobby_nick": "Maester"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "mt_Firewalk",
+                    "player_one_setup": "Blue, Castle, Adela",
+                    "player_two_setup": "Red, Castle, Cuthbert",
+                    "description": "tfp",
+                    "bidding_amount": -5500,
+                    "ending_day": "1 2 4",
+                    "started_at": "2023-04-01T19:55:00+02:00",
+                    "created_at": "2023-04-02T16:56:18.679999+02:00"
+                },
+                {
+                    "pk": 14275,
+                    "winner": {
+                        "pk": 1947,
+                        "username": "Promeit",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Promeit#8244",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/peepocute.webp",
+                            "hota_lobby_nick": "Promeit"
+                        }
+                    },
+                    "source": {
+                        "pk": 1947,
+                        "username": "Promeit",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Promeit#8244",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/peepocute.webp",
+                            "hota_lobby_nick": "Promeit"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 839,
+                        "username": "Maester",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Maester",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/ae8457cd-ee86-45d0-97c5-e29ff1c0a737---ladny-dzika-ilustracja-kreskowka_53876-66606.jpg",
+                            "hota_lobby_nick": "Maester"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "Jebus Cross",
+                    "player_one_setup": "Blue, Fortress, Wystan",
+                    "player_two_setup": "Red, Dungeon, Shakti",
+                    "description": "tfp",
+                    "bidding_amount": 1200,
+                    "ending_day": "1 2 2",
+                    "started_at": "2023-04-02T15:05:00+02:00",
+                    "created_at": "2023-04-02T16:57:47.046218+02:00"
+                }
+            ]
+        },
+        {
+            "pk": 16667,
+            "player_one": {
+                "pk": 2035,
+                "username": "marczik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "marcziqs#9614",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "marczik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4069,
+                "username": "Darcik",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "Darcik#8498",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Darcik"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16668,
+            "player_one": {
+                "pk": 1500,
+                "username": "Rambixxx",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Rambixxx#8410",
+                    "location": "",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/jakub.wawrzyniak.18/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Rambixxx"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 1813,
+                "username": "Ronoroa",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Ronoroa",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/123.jpg",
+                    "hota_lobby_nick": "Ronoroa"
+                }
+            },
+            "score_player_two": 2,
+            "winner": {
+                "pk": 1813,
+                "username": "Ronoroa",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Ronoroa",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/123.jpg",
+                    "hota_lobby_nick": "Ronoroa"
+                }
+            },
+            "finished": true,
+            "reportinphase_set": [
+                {
+                    "pk": 14109,
+                    "winner": {
+                        "pk": 1813,
+                        "username": "Ronoroa",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Ronoroa",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/123.jpg",
+                            "hota_lobby_nick": "Ronoroa"
+                        }
+                    },
+                    "source": {
+                        "pk": 1813,
+                        "username": "Ronoroa",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Ronoroa",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/123.jpg",
+                            "hota_lobby_nick": "Ronoroa"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 1500,
+                        "username": "Rambixxx",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Rambixxx#8410",
+                            "location": "",
+                            "icq": "",
+                            "fb": "https://www.facebook.com/jakub.wawrzyniak.18/",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "Rambixxx"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "rally",
+                    "player_one_setup": "red Cove Anabel",
+                    "player_two_setup": "Blue Inferno Calh",
+                    "description": "Fb anabel vs ciele shackle pograly ! tfp!",
+                    "bidding_amount": 4100,
+                    "ending_day": "1 2 7",
+                    "started_at": "2023-03-28T16:09:00+02:00",
+                    "created_at": "2023-03-29T20:11:38.011701+02:00"
+                },
+                {
+                    "pk": 14110,
+                    "winner": {
+                        "pk": 1813,
+                        "username": "Ronoroa",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Ronoroa",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/123.jpg",
+                            "hota_lobby_nick": "Ronoroa"
+                        }
+                    },
+                    "source": {
+                        "pk": 1813,
+                        "username": "Ronoroa",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Ronoroa",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/123.jpg",
+                            "hota_lobby_nick": "Ronoroa"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 1500,
+                        "username": "Rambixxx",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Rambixxx#8410",
+                            "location": "",
+                            "icq": "",
+                            "fb": "https://www.facebook.com/jakub.wawrzyniak.18/",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "Rambixxx"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "Jebus Cross",
+                    "player_one_setup": "Red, Conflux, Luna",
+                    "player_two_setup": "Blue Fortress Drakon",
+                    "description": "Bez fb, przeciwnik podda\u0142.",
+                    "bidding_amount": 6200,
+                    "ending_day": "1 1 5",
+                    "started_at": "2023-03-29T19:28:00+02:00",
+                    "created_at": "2023-03-29T21:30:02.629408+02:00"
+                }
+            ]
+        },
+        {
+            "pk": 16669,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16670,
+            "player_one": {
+                "pk": 2264,
+                "username": "Bigracik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Leszke",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Bigracik"
+                }
+            },
+            "score_player_one": 2,
+            "player_two": {
+                "pk": 3583,
+                "username": "ko\u0142tunik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "ko\u0142tun",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "ko\u0142tuniq"
+                }
+            },
+            "score_player_two": 0,
+            "winner": {
+                "pk": 2264,
+                "username": "Bigracik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Leszke",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Bigracik"
+                }
+            },
+            "finished": true,
+            "reportinphase_set": [
+                {
+                    "pk": 14337,
+                    "winner": {
+                        "pk": 2264,
+                        "username": "Bigracik",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Leszke",
+                            "location": "",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "Bigracik"
+                        }
+                    },
+                    "source": {
+                        "pk": 3583,
+                        "username": "ko\u0142tunik",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "ko\u0142tun",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "ko\u0142tuniq"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 2264,
+                        "username": "Bigracik",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Leszke",
+                            "location": "",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "Bigracik"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "Walkover",
+                    "player_one_setup": "",
+                    "player_two_setup": "",
+                    "description": "",
+                    "bidding_amount": null,
+                    "ending_day": "",
+                    "started_at": null,
+                    "created_at": "2023-04-04T16:36:09.185189+02:00"
+                },
+                {
+                    "pk": 14338,
+                    "winner": {
+                        "pk": 2264,
+                        "username": "Bigracik",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Leszke",
+                            "location": "",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "Bigracik"
+                        }
+                    },
+                    "source": {
+                        "pk": 839,
+                        "username": "Maester",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Maester",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/ae8457cd-ee86-45d0-97c5-e29ff1c0a737---ladny-dzika-ilustracja-kreskowka_53876-66606.jpg",
+                            "hota_lobby_nick": "Maester"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 839,
+                        "username": "Maester",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Maester",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/ae8457cd-ee86-45d0-97c5-e29ff1c0a737---ladny-dzika-ilustracja-kreskowka_53876-66606.jpg",
+                            "hota_lobby_nick": "Maester"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "Walkover",
+                    "player_one_setup": "",
+                    "player_two_setup": "",
+                    "description": "",
+                    "bidding_amount": null,
+                    "ending_day": "",
+                    "started_at": null,
+                    "created_at": "2023-04-04T18:06:09.885688+02:00"
+                }
+            ]
+        },
+        {
+            "pk": 16671,
+            "player_one": {
+                "pk": 130,
+                "username": "LordDavy",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "LordDavy",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "LordDavy"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16672,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 3842,
+                "username": "neSpeshaPlay",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.twitch.tv/nespeshaplay",
+                    "discord": "neSpeshaPlay#6838",
+                    "location": "RU",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "neSpeshaPlay"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16673,
+            "player_one": {
+                "pk": 52,
+                "username": "Kacper",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "http://twitch.tv/kacperpolok",
+                    "discord": "Kacper #9151",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "KacperOK"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16674,
+            "player_one": {
+                "pk": 2611,
+                "username": "Ponczuszek",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "http://www.twitch.tv/PonczekDusiszGo",
+                    "discord": "P\u0105czu\u015b#1945",
+                    "location": "IT",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/ponczus.jpg",
+                    "hota_lobby_nick": "Ponczuszek"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16675,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 21,
+                "username": "HellLighT",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.twitch.tv/helllight111",
+                    "discord": "HellLigHT#9837",
+                    "location": "RU",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/f859fc6c-de24-4409-bddb-7a869065da3f---gundula_112.png",
+                    "hota_lobby_nick": "HellLighT"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16676,
+            "player_one": {
+                "pk": 4017,
+                "username": "bartomiej",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "zopo21",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Sraker1"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 34,
+                "username": "Aproh",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.twitch.tv/aprohs",
+                    "discord": "Aproh #3713",
+                    "location": "PL",
+                    "icq": "747734461",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/2193379e-1a1e-4aa9-a847-884ac0a01c0b---discord2.png",
+                    "hota_lobby_nick": "Aproh"
+                }
+            },
+            "score_player_two": 2,
+            "winner": {
+                "pk": 34,
+                "username": "Aproh",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.twitch.tv/aprohs",
+                    "discord": "Aproh #3713",
+                    "location": "PL",
+                    "icq": "747734461",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/2193379e-1a1e-4aa9-a847-884ac0a01c0b---discord2.png",
+                    "hota_lobby_nick": "Aproh"
+                }
+            },
+            "finished": true,
+            "reportinphase_set": [
+                {
+                    "pk": 14366,
+                    "winner": {
+                        "pk": 34,
+                        "username": "Aproh",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "https://www.twitch.tv/aprohs",
+                            "discord": "Aproh #3713",
+                            "location": "PL",
+                            "icq": "747734461",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/2193379e-1a1e-4aa9-a847-884ac0a01c0b---discord2.png",
+                            "hota_lobby_nick": "Aproh"
+                        }
+                    },
+                    "source": {
+                        "pk": 34,
+                        "username": "Aproh",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "https://www.twitch.tv/aprohs",
+                            "discord": "Aproh #3713",
+                            "location": "PL",
+                            "icq": "747734461",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/2193379e-1a1e-4aa9-a847-884ac0a01c0b---discord2.png",
+                            "hota_lobby_nick": "Aproh"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 4017,
+                        "username": "bartomiej",
+                        "profile": {
+                            "email_confirmed": false,
+                            "stream_url": "",
+                            "discord": "zopo21",
+                            "location": "",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "Sraker1"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "rally",
+                    "player_one_setup": "red, necro, thant",
+                    "player_two_setup": "blue, fortress, alkin",
+                    "description": "tfp",
+                    "bidding_amount": 4600,
+                    "ending_day": "1 1 4",
+                    "started_at": "2023-04-04T22:23:00+02:00",
+                    "created_at": "2023-04-04T22:57:06.259303+02:00"
+                },
+                {
+                    "pk": 14375,
+                    "winner": {
+                        "pk": 34,
+                        "username": "Aproh",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "https://www.twitch.tv/aprohs",
+                            "discord": "Aproh #3713",
+                            "location": "PL",
+                            "icq": "747734461",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/2193379e-1a1e-4aa9-a847-884ac0a01c0b---discord2.png",
+                            "hota_lobby_nick": "Aproh"
+                        }
+                    },
+                    "source": {
+                        "pk": 34,
+                        "username": "Aproh",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "https://www.twitch.tv/aprohs",
+                            "discord": "Aproh #3713",
+                            "location": "PL",
+                            "icq": "747734461",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/2193379e-1a1e-4aa9-a847-884ac0a01c0b---discord2.png",
+                            "hota_lobby_nick": "Aproh"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 4017,
+                        "username": "bartomiej",
+                        "profile": {
+                            "email_confirmed": false,
+                            "stream_url": "",
+                            "discord": "zopo21",
+                            "location": "",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": "Sraker1"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "mt_JebusKing",
+                    "player_one_setup": "red, necro, solmyr",
+                    "player_two_setup": "blue, necro, vidomina",
+                    "description": "tfp",
+                    "bidding_amount": 4900,
+                    "ending_day": "1 2 5",
+                    "started_at": "2023-04-04T23:00:00+02:00",
+                    "created_at": "2023-04-05T02:29:39.085250+02:00"
+                }
+            ]
+        },
+        {
+            "pk": 16677,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16678,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 422,
+                "username": "Kenye",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Kenye#9876",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Kenye"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16679,
+            "player_one": {
+                "pk": 152,
+                "username": "Spartakus",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Spartakus",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Spartakus"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 1440,
+                "username": "Flisiu",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Flisiu#5972",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Flisiu"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16680,
+            "player_one": {
+                "pk": 862,
+                "username": "wojtek121",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "wojtek121",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "wojtek121"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 890,
+                "username": "W\u0142adca_wunszy",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "W\u0142adca wunszy",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Wladca_wunszy"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16681,
+            "player_one": {
+                "pk": 720,
+                "username": "cruz3N",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "http://twitch.tv/cruz3n",
+                    "discord": "cruzeN#1629",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/cruzensson.png",
+                    "hota_lobby_nick": "cruzeN"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4034,
+                "username": "Eivreal",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Marcin W#1349",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/slowbro.png",
+                    "hota_lobby_nick": "Eivreal"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16682,
+            "player_one": {
+                "pk": 108,
+                "username": "mirek_swirek",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "mirek_swirek",
+                    "location": "VA",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/a4de9792-38b3-48ef-9652-37670c06181f---mr_meeseeks.jpg",
+                    "hota_lobby_nick": "mirek_swirek"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 962,
+                "username": "NosakaYuuma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Nie Jestem Uroczy",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/a.jpg",
+                    "hota_lobby_nick": "Nosaka Yuuma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16683,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16684,
+            "player_one": {
+                "pk": 1859,
+                "username": "Kyraha",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.twitch.tv/kyrahxd",
+                    "discord": "kyraha#1731",
+                    "location": "RO",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Kyraha"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16685,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 77,
+                "username": "StygianOne",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "http://www.twitch.tv/stygianone",
+                    "discord": "StygianOne#5013",
+                    "location": "CZ",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/46602974-a465-4d3f-8123-90836091e160---badges4_72.png",
+                    "hota_lobby_nick": "StygianOne"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16686,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16687,
+            "player_one": {
+                "pk": 1872,
+                "username": "Ololas",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Zwariowany Olaf#1694",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Ololas"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16688,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16689,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16690,
+            "player_one": {
+                "pk": 1924,
+                "username": "Gongwazy",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Gongwazy#1800",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Gongwazy"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16691,
+            "player_one": {
+                "pk": 2484,
+                "username": "krol_wioski",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.twitch.tv/krolwioskih3",
+                    "discord": "kr\u00f3l wioski#0505",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "kr\u00f3l wioski H3"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16692,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 3550,
+                "username": "FireMagic",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Andrzejh3#3919",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "FireMagic_"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16693,
+            "player_one": {
+                "pk": 1288,
+                "username": "silesian7",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Silesian",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "silesian7"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 1318,
+                "username": "Becel",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Becel#1564",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/71cf0b9b-bfb8-4018-8798-416c67f2d45b---6b464c4b735657d81b890774c8056cd2.jpg",
+                    "hota_lobby_nick": "Becel"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16694,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16695,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16696,
+            "player_one": {
+                "pk": 123,
+                "username": "Derek",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Derek.",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/unknown.png",
+                    "hota_lobby_nick": "Derek882"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 478,
+                "username": "smok_",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "smok_#8762",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "smok"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16697,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16698,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16699,
+            "player_one": {
+                "pk": 3318,
+                "username": "MysterialH3",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "MysterialH3#1673",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "MysterialH3"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 131,
+                "username": "bejbus1",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCQqr2kB5WdFljAwEmwzrXGw?view_as=subscriber",
+                    "discord": "bejbus1#1334",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/037d6b46-1092-4a9d-896e-79db395d6f78---aa.png",
+                    "hota_lobby_nick": "bejbus1"
+                }
+            },
+            "score_player_two": 1,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": [
+                {
+                    "pk": 14302,
+                    "winner": {
+                        "pk": 131,
+                        "username": "bejbus1",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "https://www.youtube.com/channel/UCQqr2kB5WdFljAwEmwzrXGw?view_as=subscriber",
+                            "discord": "bejbus1#1334",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/037d6b46-1092-4a9d-896e-79db395d6f78---aa.png",
+                            "hota_lobby_nick": "bejbus1"
+                        }
+                    },
+                    "source": {
+                        "pk": 131,
+                        "username": "bejbus1",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "https://www.youtube.com/channel/UCQqr2kB5WdFljAwEmwzrXGw?view_as=subscriber",
+                            "discord": "bejbus1#1334",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/037d6b46-1092-4a9d-896e-79db395d6f78---aa.png",
+                            "hota_lobby_nick": "bejbus1"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 839,
+                        "username": "Maester",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "Maester",
+                            "location": "PL",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/ae8457cd-ee86-45d0-97c5-e29ff1c0a737---ladny-dzika-ilustracja-kreskowka_53876-66606.jpg",
+                            "hota_lobby_nick": "Maester"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "mt_JebusKing",
+                    "player_one_setup": "red,cove,eov",
+                    "player_two_setup": "miriam",
+                    "description": "tfp",
+                    "bidding_amount": 6300,
+                    "ending_day": "1 2 1",
+                    "started_at": "2023-04-01T18:01:00+02:00",
+                    "created_at": "2023-04-03T18:52:46.610782+02:00"
+                }
+            ]
+        },
+        {
+            "pk": 16700,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 1947,
+                "username": "Promeit",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Promeit#8244",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/peepocute.webp",
+                    "hota_lobby_nick": "Promeit"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16701,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 1813,
+                "username": "Ronoroa",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Ronoroa",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/123.jpg",
+                    "hota_lobby_nick": "Ronoroa"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16702,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 2264,
+                "username": "Bigracik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Leszke",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Bigracik"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16703,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16704,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16705,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 34,
+                "username": "Aproh",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.twitch.tv/aprohs",
+                    "discord": "Aproh #3713",
+                    "location": "PL",
+                    "icq": "747734461",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/2193379e-1a1e-4aa9-a847-884ac0a01c0b---discord2.png",
+                    "hota_lobby_nick": "Aproh"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16706,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16707,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16708,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16709,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16710,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16711,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16712,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16713,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16714,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16715,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16716,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16717,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16718,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16719,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16720,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16721,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16722,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16723,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16724,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16725,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16726,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16727,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16728,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16729,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16730,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16731,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16732,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16733,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16734,
+            "player_one": {
+                "pk": 184,
+                "username": "DOGGAO",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "DOGGAO#8527",
+                    "location": "BR",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/603c7377-d3ea-43e3-a743-c97f5a6fb098---DOGGAO.png",
+                    "hota_lobby_nick": "DOGGAO1"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 2101,
+                "username": "MarceloSagaz",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "",
+                    "location": "BR",
+                    "icq": "WhatsApp +55 83 98203 8873",
+                    "fb": "https://www.facebook.com/marcelosagazpb",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/29b5dce0-b3f1-4a10-9086-639a84cc3899---6BA185F1-BDD0-4B80-BA1E-BE312E12915D.png",
+                    "hota_lobby_nick": "MMSagaz"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 16735,
+            "player_one": {
+                "pk": 1212,
+                "username": "M@rshall",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 1204,
+                "username": "Exhio",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 1,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": [
+                {
+                    "pk": 13852,
+                    "winner": {
+                        "pk": 1204,
+                        "username": "Exhio",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "",
+                            "location": "",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                            "hota_lobby_nick": null
+                        }
+                    },
+                    "source": {
+                        "pk": 184,
+                        "username": "DOGGAO",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "DOGGAO#8527",
+                            "location": "BR",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/603c7377-d3ea-43e3-a743-c97f5a6fb098---DOGGAO.png",
+                            "hota_lobby_nick": "DOGGAO1"
+                        }
+                    },
+                    "who_confirmed": {
+                        "pk": 184,
+                        "username": "DOGGAO",
+                        "profile": {
+                            "email_confirmed": true,
+                            "stream_url": "",
+                            "discord": "DOGGAO#8527",
+                            "location": "BR",
+                            "icq": "",
+                            "fb": "",
+                            "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/603c7377-d3ea-43e3-a743-c97f5a6fb098---DOGGAO.png",
+                            "hota_lobby_nick": "DOGGAO1"
+                        }
+                    },
+                    "is_confirmed": true,
+                    "template": "6lm10a",
+                    "player_one_setup": "Red, Necropolis, Galthran",
+                    "player_two_setup": "Blue, Castle, Valeska",
+                    "description": "Marshall lutou bravamente e n\u00e3o conseguiu recuperar sua cidade principal, tudo foi resolvido no combate, Exhio ganha pela excelente estrat\u00e9gia",
+                    "bidding_amount": 0,
+                    "ending_day": "1 4 7",
+                    "started_at": "2023-03-18T05:30:00+01:00",
+                    "created_at": "2023-03-20T16:04:18.309264+01:00"
+                }
+            ]
+        },
+        {
+            "pk": 16736,
+            "player_one": null,
+            "score_player_one": 0,
+            "player_two": null,
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17127,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17128,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17129,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17130,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17131,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17132,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17133,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17134,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17135,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17136,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17137,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17138,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17139,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17140,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17141,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17142,
+            "player_one": {
+                "pk": 4284,
+                "username": "Overnight",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Overnight",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17143,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17144,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17145,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17146,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17147,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17148,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17149,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17150,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17151,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17152,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17153,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17154,
+            "player_one": {
+                "pk": 193,
+                "username": "Mopsik",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Mopsik #1466",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": "Mopsik"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 4272,
+                "username": "ROZ",
+                "profile": {
+                    "email_confirmed": false,
+                    "stream_url": "",
+                    "discord": "ROZ#1944",
+                    "location": "",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/avatar_placeholder.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        },
+        {
+            "pk": 17155,
+            "player_one": {
+                "pk": 4275,
+                "username": "Sloma",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "",
+                    "discord": "Sloma",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/88085b121d47daca8f57ed5c9f6b54b0.png",
+                    "hota_lobby_nick": "Sloma"
+                }
+            },
+            "score_player_one": 0,
+            "player_two": {
+                "pk": 608,
+                "username": "snikiTWH",
+                "profile": {
+                    "email_confirmed": true,
+                    "stream_url": "https://www.youtube.com/channel/UCM1UyyjhiW7qMLrL68UADcg?view_as=subscriber",
+                    "discord": "snikiTWH#1841",
+                    "location": "PL",
+                    "icq": "",
+                    "fb": "https://www.facebook.com/Snikitwh-217219985826118/",
+                    "avatar": "https://h3t-live.s3.amazonaws.com/media/avatars/6fdc8666-3ac1-4cd6-a07d-9a3cd2e16c73---minaiturka17.09v2.png",
+                    "hota_lobby_nick": null
+                }
+            },
+            "score_player_two": 0,
+            "winner": null,
+            "finished": false,
+            "reportinphase_set": []
+        }
+    ]
+}
