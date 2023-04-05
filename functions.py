@@ -1,10 +1,12 @@
 import os
 os.environ["OMP_NUM_THREADS"] = "1"
 
-from random import random
+from random import random, randint
 from statistics import stdev
 from sklearn.cluster import KMeans
 from copy import copy, deepcopy
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
 
 import plotly.express as px
 import pandas as pd
@@ -244,13 +246,69 @@ def get_optimal_player_1_bid(df):
     X_won = np.array(df_won['bidding']).reshape(-1, 1)
     X_lost = np.array(df_lost['bidding']).reshape(-1, 1)
     
-    kmeans_won = KMeans(n_clusters=1, random_state=0, n_init=2).fit(X_won)
-    kmeans_lost= KMeans(n_clusters=1, random_state=0, n_init=2).fit(X_lost)
+    kmeans_won = KMeans(n_clusters=1, random_state=103349, n_init=2).fit(X_won)
+    kmeans_lost= KMeans(n_clusters=1, random_state=103349, n_init=2).fit(X_lost)
     
     optimal_value =  int((kmeans_won.cluster_centers_[0][0] + kmeans_lost.cluster_centers_[0][0])/2)
     
     return optimal_value
 
 
-def run_model(town1, town2, bidding):
-    return 0
+# Creates a version of the base dataframe with one-hot encoding for towns and heroes
+def prepare_df_for_model(df):
+    new_df = df[["bidding", "town", "opponent_town", "result"]]
+    new_df = pd.get_dummies(new_df, drop_first=False).dropna().reset_index(drop=True)
+
+    new_df_hero = df[["bidding", "town", "hero", "opponent_town", "opponent_hero", "result"]]
+    new_df_hero = pd.get_dummies(new_df_hero, drop_first=False).dropna().reset_index(drop=True)
+
+    X = new_df.drop('result', axis=1)
+    y = new_df['result'].astype(int)
+
+    X_hero = new_df_hero.drop('result', axis=1)
+    y_hero = new_df_hero['result'].astype(int)
+
+    return X, y, X_hero, y_hero
+
+
+def create_random_forest_model(X, y, X_hero, y_hero):
+    #Creating a home-brewed random forest for trees NOT dealing with hero choice
+    forest_no_heroes = [0 for _ in range(10)]
+    for i in range(10):
+        forest_no_heroes[i] = DecisionTreeClassifier(random_state=i, 
+                                                    splitter='best', 
+                                                    max_depth = randint(3, 6), 
+                                                    min_samples_split = randint(3, 6), 
+                                                    max_features = 1).fit(X, y) #5 and 5 originally, not random
+                                                            
+
+    #Creating a home-brewed random forest for trees dealing with hero choice
+    forest_heroes = [0 for _ in range(10)]
+    for i in range(10):
+        forest_heroes[i] = DecisionTreeClassifier(random_state=i, 
+                                                splitter='best', 
+                                                max_depth = randint(3, 6), 
+                                                min_samples_split = randint(3, 6), 
+                                                max_features = 1).fit(X_hero, y_hero) #5 and 5 originally, not random
+    
+    return forest_no_heroes, forest_heroes
+
+
+def run_model(town1, town2, heros, hero1, hero2, bidding, forest, X):
+
+    if heros:
+        input_df = pd.DataFrame([[bidding, town1, town2, hero1, hero2]], columns=["bidding", "town", "opponent_town", "hero", "opponent_hero"])
+        input_df = pd.get_dummies(input_df, drop_first=False).dropna().reset_index(drop=True)
+
+    else:
+        input_df = pd.DataFrame([[bidding, town1, town2]], columns=["bidding", "town", "opponent_town"])
+        input_df = pd.get_dummies(input_df, drop_first=False).dropna().reset_index(drop=True)
+    
+
+    X = pd.concat([X, input_df]).fillna(0)
+    input_case = np.array(X.iloc[-1]).reshape(1, -1)
+
+    predictions = [tree.predict_proba(input_case)[0] for tree in forest]
+    predicted_winrate = round((np.sum(np.array(predictions), axis=0)/10)[0],2)
+    
+    return predicted_winrate

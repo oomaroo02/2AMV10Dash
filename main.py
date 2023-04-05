@@ -48,6 +48,7 @@ app.layout = html.Div([
     
         # Tab with the model
         dcc.Tab(label='Model', children=[
+            html.Div("Below you can fill in different variables for a prediction model.\nIf you want to include hero in your analysis you can fill those in, but it might decrease accuracy."),
             html.Div(dcc.Dropdown(towns, placeholder="town (player 1)", id='model_town_1'), style={"width": "30%"}),
             html.Div(dcc.Dropdown([], placeholder="hero (player 1)", id='model_hero_1'), style={"width": "30%"}),
             dcc.Input(type="number", placeholder="bidding (player 1's perspective)", id="model_bidding", style={"width": "30%"}),
@@ -106,6 +107,22 @@ app.layout = html.Div([
 ])
 
 
+@app.callback(
+    Output("dummy", "data"),
+    Input("template_dropdown", "value"),
+)
+def create_model(template):
+    global X, X_hero, forest_no_hero, forest_hero
+
+    if template == "All":
+        cur_df = copy(import_df)
+    else:
+        cur_df = import_df[import_df['template_type'] == template]
+
+    X, y, X_hero, y_hero = prepare_df_for_model(cur_df)
+    forest_no_hero, forest_hero = create_random_forest_model(X, y, X_hero, y_hero)
+
+    return None
 
 # For the model dropdown where the heros are chosen, make the dropdowns show the heros for the currently selected town
 @app.callback(
@@ -138,8 +155,9 @@ def update_hero2_dropdown(town):
     Input("model_bidding", "value"),
     Input("model_hero_1", "value"),
     Input("model_hero_2", "value"),
+    Input("dataset_full", "data")
 )
-def update_model(town1, town2, bidding, hero1, hero2):
+def update_model(town1, town2, bidding, hero1, hero2, dummy):
     if (town1 not in towns):
         return "No town for player 1"
     
@@ -149,15 +167,16 @@ def update_model(town1, town2, bidding, hero1, hero2):
     elif (not bidding):
         return "No bidding added"
     
-    elif (hero1 not in heroes_per_town[town1]):
-        return "No hero for player 1"
+    elif (hero1 not in heroes_per_town[town1]) and (hero2 not in heroes_per_town[town2]):
+        result = run_model(town1, town2, False, hero1, hero2, bidding, forest_no_hero, X)
+        return f"Predicted winrate for player 1 is {result}"
     
-    elif (hero2 not in heroes_per_town[town2]):
-        return "No hero for player 2"
+    elif (hero1 in heroes_per_town[town1]) and (hero2 in heroes_per_town[town2]):
+        result = run_model(town1, town2, True, hero1, hero2, bidding, forest_hero, X_hero)
+        return f"Predicted winrate for player 1 is {result}"
     
-    result = run_model(town1, town2, int(bidding))
-
-    return f"Expected winrate is {result}"
+    else:
+        return "You need to either select both heros or no heroes"
     
     
 # Filter data based on the selected template and selected color
