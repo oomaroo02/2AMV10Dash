@@ -274,6 +274,7 @@ def prepare_df_for_model(df):
     return X, y, X_hero, y_hero
 
 
+# Creates the random forest models of tab 1
 def create_random_forest_model(X, y, X_hero, y_hero):
     #Creating a home-brewed random forest for trees NOT dealing with hero choice
     forest_no_heroes = [0 for _ in range(10)]
@@ -297,6 +298,7 @@ def create_random_forest_model(X, y, X_hero, y_hero):
     return forest_no_heroes, forest_heroes
 
 
+# Predicts using the models in forest for a certain set of towns and (optionally) heros
 def run_model(town1, town2, heros, hero1, hero2, bidding, forest, X):
 
     if heros:

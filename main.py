@@ -107,6 +107,8 @@ app.layout = html.Div([
 ])
 
 
+
+# Creates the random forest models used at the first tab
 @app.callback(
     Output("dummy", "data"),
     Input("template_dropdown", "value"),
@@ -123,6 +125,7 @@ def create_model(template):
     forest_no_hero, forest_hero = create_random_forest_model(X, y, X_hero, y_hero)
 
     return None
+
 
 # For the model dropdown where the heros are chosen, make the dropdowns show the heros for the currently selected town
 @app.callback(
@@ -147,7 +150,7 @@ def update_hero2_dropdown(town):
     return [], "hero (player 2)"
 
 
-# Runs the model
+# Runs a prediction using the random forest model whenever input is changed
 @app.callback(
     Output("model_result", "children"),
     Input("model_town_1", "value"),
